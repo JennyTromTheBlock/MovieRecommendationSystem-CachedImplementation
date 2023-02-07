@@ -13,7 +13,9 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("presentation/view/LogIn.fxml"));
         primaryStage.setTitle("Movie Recommendation System 0.01 Beta");
         // primaryStage.setFullScreen(true);
+
         primaryStage.setScene(new Scene(root));
+        primaryStage.getScene().getStylesheets().add(getClass().getResource("/dk/easv/presentation/CSS/Test.css").toExternalForm());
         primaryStage.show();
     }
 
