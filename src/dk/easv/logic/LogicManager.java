@@ -115,4 +115,13 @@ public class LogicManager {
             return null;
         }
     }
+
+    public User loginUser(String username, String password){
+        User u = dataMgr.loginUser(username, password);
+        return u;
+    }
+
+    public User createUser(String username, String password) {
+        return dataMgr.createUser(username, password);
+    }
 }

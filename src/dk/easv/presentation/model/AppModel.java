@@ -10,6 +10,8 @@ import javafx.collections.ObservableList;
 public class AppModel {
 
     LogicManager logic = new LogicManager();
+
+    private User currentUser = null;
     // Models of the data in the view
     private final ObservableList<User>  obsUsers = FXCollections.observableArrayList();
     private final ObservableList<Movie> obsTopMovieSeen = FXCollections.observableArrayList();
@@ -78,4 +80,23 @@ public class AppModel {
         else
             return true;
     }
+
+    public User loginUser(String username, String password){
+        currentUser = logic.loginUser(username, password);
+        return currentUser;
+    }
+
+    public User createNewUser(String username, String password){
+        currentUser = logic.createUser(username, password);
+        return null;
+    }
+
+    /**
+     * sets the current user to null
+     * should always set the login page at the same time
+     */
+    public void logOutUser(){
+        currentUser = null;
+    }
+
 }

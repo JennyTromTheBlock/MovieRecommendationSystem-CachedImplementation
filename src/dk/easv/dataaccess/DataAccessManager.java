@@ -89,4 +89,16 @@ public class DataAccessManager {
     }
 
 
+    //todo make database connector for user db
+    //todo sql query for finding match on both username and password
+    //todo maybe make a method for checking only for username also, so the user can see if it is the username or password that are wrong
+    public User loginUser(String username, String password) {
+        return null;
+    }
+
+    //todo make sql query for creating new user in database and returning it.
+    public User createUser(String username, String password) {
+        return null;
+    }
+
 }

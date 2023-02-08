@@ -8,6 +8,11 @@ public class User {
     private String name;
     private List<Rating> ratings;
 
+    private String password;
+
+
+    private String imgPath;
+
     public User(int id, String name) {
         this.id = id;
         this.name = name;
@@ -34,10 +39,28 @@ public class User {
         return ratings.size();
     }
 
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+
     @Override
     public String toString() {
         return id +
                 ", '" + name + '\'' +
                 ", ratings=" + ratings.size();
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 }
