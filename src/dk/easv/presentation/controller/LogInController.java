@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
@@ -31,6 +32,8 @@ import java.util.ResourceBundle;
 public class LogInController implements Initializable {
 
     public BorderPane logInBorderPane;
+    public Button btnLogIn;
+    public Button btnSignUp;
     private int sliderDistance = -390;
     public Label loginSlider;
     public AnchorPane loginBackGround;
@@ -64,7 +67,6 @@ public class LogInController implements Initializable {
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.setTitle("Movie Recommendation System 0.01 Beta");
             stage.show();
             AppController controller = loader.getController();
 
@@ -89,6 +91,7 @@ public class LogInController implements Initializable {
     }
 
     public void handleSliderOnPress(MouseEvent mouseEvent) {
+
         if(isLoginSliderLeft){
             isLoginSliderLeft = false;
         }else {
@@ -102,11 +105,10 @@ public class LogInController implements Initializable {
         translate.setDuration(Duration.millis(500));
         translate.setByX(sliderDistance);
         translate.play();
-
     }
 
     /**
-     * sets the buttons and inoutFileds active or disables them if createAccount is selected or not
+     * sets the buttons and inoutFields active or disables them if createAccount is selected or not
      */
     private void toogleSignInForm() {
         if (isLoginSliderLeft) {
@@ -114,20 +116,22 @@ public class LogInController implements Initializable {
             goToCreateAccount.setDisable(false);
             userId.setDisable(false);
             passwordField.setDisable(false);
+            btnLogIn.setDisable(false);
             //sets log in true
             goToLogInForm.setDisable(true);
             userId1.setDisable(true);
             passwordField1.setDisable(true);
+            btnSignUp.setDisable(true);
         }else {
             goToCreateAccount.setDisable(true);
             userId.setDisable(true);
             passwordField.setDisable(true);
+            btnLogIn.setDisable(true);
 
             goToLogInForm.setDisable(false);
             userId1.setDisable(false);
-
+            btnSignUp.setDisable(false);
             passwordField1.setDisable(false);
         }
     }
-
 }

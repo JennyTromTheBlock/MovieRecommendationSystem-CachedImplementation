@@ -130,7 +130,7 @@
 
 }
 
-#userId, #passwordField {
+#userId, #passwordField, #userId1, #passwordField1 {
     -fx-text-fill: white;
     -fx-border-color: grey;
     -fx-border-width: 0 0 2 0;

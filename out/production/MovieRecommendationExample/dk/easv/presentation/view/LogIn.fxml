@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
 <BorderPane fx:id="logInBorderPane" stylesheets="@../CSS/Test.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.LogInController">
-   <right>
+   <center>
       <AnchorPane fx:id="loginBackGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <Button layoutX="436.0" layoutY="343.0" mnemonicParsing="false" onAction="#logIn" prefHeight="38.0" prefWidth="146.0" text="Log - in">
+            <Button fx:id="btnLogIn" layoutX="436.0" layoutY="343.0" mnemonicParsing="false" onAction="#logIn" prefHeight="38.0" prefWidth="146.0" text="Log - in">
                <font>
                   <Font size="20.0" />
                </font></Button>
@@ -25,40 +24,31 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="79.0" layoutY="34.0" prefHeight="55.0" prefWidth="232.0" text="Create account" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="62.0" prefHeight="66.0" prefWidth="311.0" text="Create account" textAlignment="CENTER">
                <font>
-                  <Font size="31.0" />
+                  <Font size="36.0" />
                </font>
             </Label>
-            <GridPane fx:id="loginInputGridPane1" layoutX="41.0" layoutY="168.0" prefHeight="130.0" prefWidth="262.0">
-               <columnConstraints>
-                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-               </columnConstraints>
-               <rowConstraints>
-                  <RowConstraints maxHeight="103.4" minHeight="10.0" prefHeight="70.4" vgrow="SOMETIMES" />
-                  <RowConstraints maxHeight="55.2" minHeight="10.0" prefHeight="55.2" vgrow="SOMETIMES" />
-               </rowConstraints>
-               <children>
-                  <PasswordField fx:id="passwordField1" promptText="PassWord" GridPane.rowIndex="1" />
-                  <TextField fx:id="userId1" prefHeight="26.0" prefWidth="210.0" promptText="UserName" />
-               </children>
-               <padding>
-                  <Insets left="10.0" right="10.0" />
-               </padding>
-            </GridPane>
-            <Button layoutX="99.0" layoutY="350.0" mnemonicParsing="false" onAction="#logIn" prefHeight="38.0" prefWidth="146.0" text="Sign up">
+            <Button fx:id="btnSignUp" layoutX="121.0" layoutY="343.0" mnemonicParsing="false" onAction="#logIn" prefHeight="38.0" prefWidth="146.0" text="Sign up">
                <font>
                   <Font size="20.0" />
                </font>
             </Button>
-            <Label fx:id="goToLogInForm" layoutX="101.0" layoutY="410.0" onMouseClicked="#handleSliderOnPress" prefHeight="18.0" prefWidth="142.0" text="Already have a account?" textFill="#1b1a1a" underline="true" />
-            <TextField fx:id="userId" layoutX="398.0" layoutY="206.0" prefHeight="26.0" prefWidth="210.0" promptText="UserName" />
+            <Label fx:id="goToLogInForm" alignment="CENTER" contentDisplay="CENTER" layoutX="123.0" layoutY="401.0" onMouseClicked="#handleSliderOnPress" prefHeight="18.0" prefWidth="142.0" text="Already have a account?" textFill="#1b1a1a" underline="true" />
+            <TextField fx:id="userId" layoutX="398.0" layoutY="206.0" prefHeight="26.0" prefWidth="210.0" promptText="UserName" text="Mona Azuma" />
             <PasswordField fx:id="passwordField" layoutX="397.0" layoutY="271.0" prefHeight="26.0" prefWidth="210.0" promptText="PassWord" />
-            <Label fx:id="loginSlider" alignment="CENTER" disable="true" layoutX="-10.0" prefHeight="450.0" prefWidth="320.0">
+            <TextField fx:id="userId1" layoutX="89.0" layoutY="206.0" prefHeight="26.0" prefWidth="210.0" promptText="Choose a username" />
+            <PasswordField fx:id="passwordField1" layoutX="89.0" layoutY="271.0" prefHeight="26.0" prefWidth="210.0" promptText="Choose a PassWord" />
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="144.0" prefHeight="47.0" prefWidth="225.0" text="Sign up to Fjernbetjeningen" textAlignment="CENTER">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label fx:id="loginSlider" alignment="CENTER" disable="true" layoutX="-6.0" prefHeight="450.0" prefWidth="320.0">
                <graphic>
                   <ImageView fx:id="loginLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Label>
          </children>
       </AnchorPane>
-   </right>
+   </center>
 </BorderPane>
