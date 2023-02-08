@@ -12,6 +12,8 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
@@ -27,6 +29,7 @@ public class LogInController implements Initializable {
     public AnchorPane loginBackGround;
     public GridPane loginInputGridPane;
     public GridPane loginInputGridPane1;
+    public ImageView loginLogo;
     @FXML private PasswordField passwordField;
     @FXML private TextField userId;
     private AppModel model;
@@ -34,7 +37,8 @@ public class LogInController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
-
+        Image img = new Image("Tv-Remote-50-Red.png");
+        loginLogo.setImage(img);
         model = new AppModel();
     }
 

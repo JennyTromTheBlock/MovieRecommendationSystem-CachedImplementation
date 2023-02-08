@@ -68,8 +68,10 @@
                </font>
             </Button>
             <Label layoutX="101.0" layoutY="410.0" prefHeight="18.0" prefWidth="142.0" text="Already have a account?" textFill="#1b1a1a" underline="true" />
-            <Label fx:id="loginSlider" alignment="CENTER" contentDisplay="CENTER" disable="true" layoutX="353.0" prefHeight="450.0" prefWidth="350.0" />
-            <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="457.0" layoutY="140.0" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="loginSlider" alignment="CENTER" disable="true" layoutX="353.0" prefHeight="450.0" prefWidth="350.0">
+               <graphic>
+                  <ImageView fx:id="loginLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic></Label>
          </children>
       </AnchorPane>
    </center>
