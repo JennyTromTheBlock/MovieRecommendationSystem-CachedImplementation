@@ -113,13 +113,26 @@
     -fx-font-weight: bold;
 }
 
+
+/* -------------------------------------------Login Specific styling---------------------------------------------------------------------*/
 #loginSlider, #loginInputGridPane, #loginInputGridPane1{
     -fx-background-color: #1F1F1F;
     -fx-opacity: 1;
-    -fx-background-radius: 30;
+    -fx-background-radius: 10;
+
 
 }
 #loginBackGround, #logInBorderPane{
     -fx-background-color: #1D0C0C;
-    -fx-background-radius: 30;
+}
+
+#loginSlider{
+
+}
+
+#userId, #passwordField {
+    -fx-text-fill: white;
+    -fx-border-color: grey;
+    -fx-border-width: 0 0 2 0;
+    -fx-background-color: transparent;
 }

@@ -31,8 +31,7 @@ import java.util.ResourceBundle;
 public class LogInController implements Initializable {
 
     public BorderPane logInBorderPane;
-    private int sliderDistance = -367;
-    private boolean directionLeft;
+    private int sliderDistance = -390;
     public Label loginSlider;
     public AnchorPane loginBackGround;
     public GridPane loginInputGridPane;
@@ -92,14 +91,10 @@ public class LogInController implements Initializable {
     public void handleSliderOnPress(MouseEvent mouseEvent) {
         if(isLoginSliderLeft){
             isLoginSliderLeft = false;
-
-
         }else {
             isLoginSliderLeft = true;
-            directionLeft = true;
         }
         sliderDistance = sliderDistance * -1;
-        System.out.println(sliderDistance);
         toogleSignInForm();
 
         TranslateTransition translate = new TranslateTransition();
@@ -123,7 +118,6 @@ public class LogInController implements Initializable {
             goToLogInForm.setDisable(true);
             userId1.setDisable(true);
             passwordField1.setDisable(true);
-
         }else {
             goToCreateAccount.setDisable(true);
             userId.setDisable(true);
@@ -131,6 +125,7 @@ public class LogInController implements Initializable {
 
             goToLogInForm.setDisable(false);
             userId1.setDisable(false);
+
             passwordField1.setDisable(false);
         }
     }
