@@ -113,7 +113,7 @@
     -fx-font-weight: bold;
 }
 
-#loginSlider, #loginInputGridPane{
+#loginSlider, #loginInputGridPane, #loginInputGridPane1{
     -fx-background-color: #1F1F1F;
     -fx-opacity: 1;
 }

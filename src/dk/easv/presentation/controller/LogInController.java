@@ -26,6 +26,7 @@ public class LogInController implements Initializable {
     public Label loginSlider;
     public AnchorPane loginBackGround;
     public GridPane loginInputGridPane;
+    public GridPane loginInputGridPane1;
     @FXML private PasswordField passwordField;
     @FXML private TextField userId;
     private AppModel model;
