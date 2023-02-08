@@ -57,6 +57,7 @@
 
 #homeView, #homeLabelAdded, #homeLabelAll, #homeLabelPopular{
     -fx-background-color: #222222;
+
 }
 
 #movieCard, VBox {
@@ -92,6 +93,8 @@
     -fx-border-color: #3A4750;
 }
 
+
+
 .list-view {
     -fx-background-color: transparent;
     -fx-control-inner-background: transparent;
@@ -108,4 +111,12 @@
 
 .list-cell:hover, .list-cell:selected {
     -fx-font-weight: bold;
+}
+
+#loginSlider, #loginInputGridPane{
+    -fx-background-color: #1F1F1F;
+    -fx-opacity: 1;
+}
+#loginBackGround{
+    -fx-background-color: #1D0C0C;
 }
