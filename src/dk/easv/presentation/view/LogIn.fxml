@@ -6,20 +6,20 @@
 <?import javafx.scene.text.*?>
 
 <BorderPane fx:id="logInBorderPane" stylesheets="@../CSS/Test.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.LogInController">
-   <center>
+   <top>
       <AnchorPane fx:id="loginBackGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnLogIn" layoutX="436.0" layoutY="343.0" mnemonicParsing="false" onAction="#logIn" prefHeight="38.0" prefWidth="146.0" text="Log - in">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="410.0" layoutY="62.0" prefHeight="55.0" prefWidth="186.0" text="Welcome" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="416.0" layoutY="62.0" prefHeight="55.0" prefWidth="186.0" text="Welcome" textAlignment="CENTER">
                <font>
                   <Font size="45.0" />
                </font>
             </Label>
             <Label fx:id="goToCreateAccount" layoutX="438.0" layoutY="401.0" onMouseClicked="#handleSliderOnPress" prefHeight="18.0" prefWidth="142.0" text="Want to create an Account" textFill="#1b1a1a" underline="true" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="397.0" layoutY="144.0" prefHeight="47.0" prefWidth="225.0" text="Sign in to account" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="396.0" layoutY="144.0" prefHeight="47.0" prefWidth="225.0" text="Sign in to account" textAlignment="CENTER">
                <font>
                   <Font size="15.0" />
                </font>
@@ -48,7 +48,12 @@
                <graphic>
                   <ImageView fx:id="loginLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                </graphic></Label>
+            <Button fx:id="btnCloseApp" layoutX="660.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCloseApplication" prefHeight="22.0" prefWidth="25.0" text="X">
+               <font>
+                  <Font name="System Bold" size="10.0" />
+               </font>
+            </Button>
          </children>
       </AnchorPane>
-   </center>
+   </top>
 </BorderPane>

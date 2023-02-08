@@ -3,6 +3,7 @@ package dk.easv.presentation.controller;
 import dk.easv.entities.User;
 import dk.easv.presentation.model.AppModel;
 import javafx.animation.TranslateTransition;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -32,6 +33,7 @@ import java.util.ResourceBundle;
 public class LogInController implements Initializable {
 
     public BorderPane logInBorderPane;
+    public Button btnCloseApp;
     public Button btnLogIn;
     public Button btnSignUp;
     private int sliderDistance = -390;
@@ -63,14 +65,16 @@ public class LogInController implements Initializable {
         model.loginUserFromUsername(userId.getText());
         if(model.getObsLoggedInUser()!=null){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/App.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/MainView.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.show();
-            AppController controller = loader.getController();
+            MainController controller = loader.getController();
 
-            controller.setModel(model);
+            //controller.setModel(model);
+
+            closeScene();
 
 
         } catch (IOException e) {
@@ -133,5 +137,14 @@ public class LogInController implements Initializable {
             btnSignUp.setDisable(false);
             passwordField1.setDisable(false);
         }
+    }
+
+    public void handleCloseApplication(ActionEvent actionEvent) {
+        Platform.exit();
+    }
+
+    public void closeScene(){
+        Stage stage = (Stage) btnCloseApp.getScene().getWindow();
+        stage.close();
     }
 }
