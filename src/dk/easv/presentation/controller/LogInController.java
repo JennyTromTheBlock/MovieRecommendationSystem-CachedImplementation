@@ -18,6 +18,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Background;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.util.Duration;
@@ -28,6 +29,10 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class LogInController implements Initializable {
+
+    public BorderPane logInBorderPane;
+    private int sliderDistance = -367;
+    private boolean directionLeft;
     public Label loginSlider;
     public AnchorPane loginBackGround;
     public GridPane loginInputGridPane;
@@ -85,21 +90,22 @@ public class LogInController implements Initializable {
     }
 
     public void handleSliderOnPress(MouseEvent mouseEvent) {
-        int direction = 350;
         if(isLoginSliderLeft){
-            direction = 350;
             isLoginSliderLeft = false;
 
+
         }else {
-            direction= -350;
             isLoginSliderLeft = true;
+            directionLeft = true;
         }
+        sliderDistance = sliderDistance * -1;
+        System.out.println(sliderDistance);
         toogleSignInForm();
 
         TranslateTransition translate = new TranslateTransition();
         translate.setNode(loginSlider);
         translate.setDuration(Duration.millis(500));
-        translate.setByX(direction);
+        translate.setByX(sliderDistance);
         translate.play();
 
     }

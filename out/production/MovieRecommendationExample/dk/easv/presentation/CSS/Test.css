@@ -116,7 +116,10 @@
 #loginSlider, #loginInputGridPane, #loginInputGridPane1{
     -fx-background-color: #1F1F1F;
     -fx-opacity: 1;
+    -fx-background-radius: 30;
+
 }
-#loginBackGround{
+#loginBackGround, #logInBorderPane{
     -fx-background-color: #1D0C0C;
+    -fx-background-radius: 30;
 }
