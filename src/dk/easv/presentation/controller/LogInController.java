@@ -161,4 +161,8 @@ public class LogInController implements Initializable {
 
     public void handleCjangeProfilePic(MouseEvent mouseEvent) {
     }
+
+    public void handleOpenAvatarHBox(ActionEvent actionEvent) {
+
+    }
 }

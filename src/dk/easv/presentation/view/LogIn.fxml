@@ -49,11 +49,11 @@
                   <ImageView fx:id="profileImg" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#handleCjangeProfilePic" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Label>
-            <Button fx:id="btnEditProfileImg" layoutX="194.0" layoutY="166.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="✎" textFill="#e1dcdc">
+            <Button fx:id="btnEditProfileImg" layoutX="205.0" layoutY="166.0" mnemonicParsing="false" onAction="#handleOpenAvatarHBox" prefHeight="50.0" prefWidth="50.0" text="✎" textFill="#e1dcdc">
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Label fx:id="loginSlider" alignment="CENTER" disable="true" layoutX="6.0" layoutY="401.0" prefHeight="450.0" prefWidth="320.0">
+            <Label fx:id="loginSlider" alignment="CENTER" disable="true" prefHeight="450.0" prefWidth="320.0">
                <graphic>
                   <ImageView fx:id="loginLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
