@@ -39,21 +39,20 @@
             <PasswordField fx:id="passwordField" layoutX="397.0" layoutY="271.0" prefHeight="26.0" prefWidth="210.0" promptText="PassWord" />
             <TextField fx:id="userId1" layoutX="89.0" layoutY="206.0" prefHeight="26.0" prefWidth="210.0" promptText="Choose a username" />
             <PasswordField fx:id="passwordField1" layoutX="89.0" layoutY="271.0" prefHeight="26.0" prefWidth="210.0" promptText="Choose a PassWord" />
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="81.0" layoutY="144.0" prefHeight="47.0" prefWidth="225.0" text="Sign up to Fjernbetjeningen" textAlignment="CENTER">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </Label>
-            <Label fx:id="loginSlider" alignment="CENTER" disable="true" layoutX="-6.0" prefHeight="450.0" prefWidth="320.0">
-               <graphic>
-                  <ImageView fx:id="loginLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-               </graphic></Label>
             <Button fx:id="btnCloseApp" layoutX="660.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCloseApplication" prefHeight="22.0" prefWidth="25.0" text="X">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>
             </Button>
+            <ImageView fx:id="profileImg" fitHeight="60.0" fitWidth="60.0" layoutX="164.0" layoutY="128.0" onMouseClicked="#handleCjangeProfilePic" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
    </top>
+   <center>
+      <Label fx:id="loginSlider" alignment="CENTER" disable="true" prefHeight="450.0" prefWidth="320.0" BorderPane.alignment="CENTER">
+         <graphic>
+            <ImageView fx:id="loginLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+         </graphic>
+      </Label>
+   </center>
 </BorderPane>

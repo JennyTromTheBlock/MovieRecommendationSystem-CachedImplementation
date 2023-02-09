@@ -37,6 +37,7 @@ public class LogInController implements Initializable {
     public Button btnCloseApp;
     public Button btnLogIn;
     public Button btnSignUp;
+    public ImageView profileImg;
     private int sliderDistance = -390;
     public Label loginSlider;
     public AnchorPane loginBackGround;
@@ -57,6 +58,11 @@ public class LogInController implements Initializable {
 
         Image img = new Image("Tv-Remote-50-Red.png");
         loginLogo.setImage(img);
+        Image userAvatar = new Image("UnknownUser.png");
+        profileImg.setImage(userAvatar);
+
+
+
         model = new AppModel();
 
     }
@@ -149,5 +155,8 @@ public class LogInController implements Initializable {
     public void closeScene(){
         Stage stage = (Stage) btnCloseApp.getScene().getWindow();
         stage.close();
+    }
+
+    public void handleCjangeProfilePic(MouseEvent mouseEvent) {
     }
 }
