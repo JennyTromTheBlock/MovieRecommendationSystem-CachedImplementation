@@ -99,10 +99,13 @@
     -fx-border-width: 0 0 2 0;
     -fx-background-color: transparent;
 }
-#profileLabel, #btnEditProfileImg{
+#profileLabel{
     -fx-border-width: 2 2 2 2;
     -fx-border-color: -fx-color2;
     -fx-background-radius: 90;
     -fx-border-radius: 90;
     -fx-border-color: grey;
+}
+#btnEditProfileImg{
+    -fx-background-color: transparent;
 }
