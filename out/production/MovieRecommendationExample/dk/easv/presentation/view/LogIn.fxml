@@ -24,7 +24,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="62.0" prefHeight="66.0" prefWidth="311.0" text="Create account" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="54.0" prefHeight="66.0" prefWidth="311.0" text="Create account" textAlignment="CENTER">
                <font>
                   <Font size="36.0" />
                </font>
@@ -44,7 +44,11 @@
                   <Font name="System Bold" size="10.0" />
                </font>
             </Button>
-            <ImageView fx:id="profileImg" fitHeight="60.0" fitWidth="60.0" layoutX="164.0" layoutY="128.0" onMouseClicked="#handleCjangeProfilePic" pickOnBounds="true" preserveRatio="true" />
+            <Label fx:id="profileLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="156.0" layoutY="120.0" prefHeight="80.0" prefWidth="80.0" text="Label">
+               <graphic>
+                  <ImageView fx:id="profileImg" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#handleCjangeProfilePic" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Label>
          </children>
       </AnchorPane>
    </top>
