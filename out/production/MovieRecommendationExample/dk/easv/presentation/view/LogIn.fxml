@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <BorderPane fx:id="logInBorderPane" stylesheets="@../CSS/Test.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.LogInController">
-   <top>
+   <bottom>
       <AnchorPane fx:id="loginBackGround" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <Button fx:id="btnLogIn" layoutX="436.0" layoutY="343.0" mnemonicParsing="false" onAction="#logIn" prefHeight="38.0" prefWidth="146.0" text="Log - in">
@@ -24,7 +24,7 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="38.0" layoutY="54.0" prefHeight="66.0" prefWidth="311.0" text="Create account" textAlignment="CENTER">
+            <Label alignment="CENTER" contentDisplay="CENTER" layoutX="37.0" layoutY="47.0" prefHeight="66.0" prefWidth="311.0" text="Create account" textAlignment="CENTER">
                <font>
                   <Font size="36.0" />
                </font>
@@ -49,15 +49,16 @@
                   <ImageView fx:id="profileImg" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#handleCjangeProfilePic" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Label>
-            <Button fx:id="btnEditProfileImg" layoutX="204.0" layoutY="174.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="33.0" text="✐" />
+            <Button fx:id="btnEditProfileImg" layoutX="194.0" layoutY="159.0" mnemonicParsing="false" prefHeight="50.0" prefWidth="50.0" text="✎">
+               <font>
+                  <Font size="20.0" />
+               </font></Button>
+            <Label fx:id="loginSlider" alignment="CENTER" disable="true" prefHeight="450.0" prefWidth="320.0">
+               <graphic>
+                  <ImageView fx:id="loginLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
+               </graphic>
+            </Label>
          </children>
       </AnchorPane>
-   </top>
-   <center>
-      <Label fx:id="loginSlider" alignment="CENTER" disable="true" prefHeight="450.0" prefWidth="320.0" BorderPane.alignment="CENTER">
-         <graphic>
-            <ImageView fx:id="loginLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-         </graphic>
-      </Label>
-   </center>
+   </bottom>
 </BorderPane>
