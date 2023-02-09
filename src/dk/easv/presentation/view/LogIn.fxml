@@ -49,6 +49,7 @@
                   <ImageView fx:id="profileImg" fitHeight="60.0" fitWidth="60.0" onMouseClicked="#handleCjangeProfilePic" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Label>
+            <Button layoutX="212.0" layoutY="178.0" mnemonicParsing="false" prefHeight="20.0" prefWidth="40.0" text="✎" />
          </children>
       </AnchorPane>
    </top>
