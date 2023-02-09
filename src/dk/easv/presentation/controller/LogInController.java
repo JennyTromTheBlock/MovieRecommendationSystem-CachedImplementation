@@ -18,10 +18,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
@@ -40,6 +37,7 @@ public class LogInController implements Initializable {
     public ImageView profileImg;
     public Label profileLabel;
     public Button btnEditProfileImg;
+    public Pane avatarListPane;
     private int sliderDistance = -390;
     public Label loginSlider;
     public AnchorPane loginBackGround;
@@ -159,10 +157,18 @@ public class LogInController implements Initializable {
         stage.close();
     }
 
-    public void handleCjangeProfilePic(MouseEvent mouseEvent) {
+    public void handleChangeProfilePic(MouseEvent mouseEvent) {
     }
 
     public void handleOpenAvatarHBox(ActionEvent actionEvent) {
+
+        ImageView imageView = new ImageView(new Image("UnknownUser.png"));
+        ImageView imageView1 = new ImageView(new Image("UnknownUser.png"));
+        ImageView imageView2 = new ImageView(new Image("UnknownUser.png"));
+
+        FlowPane pane = new FlowPane(imageView1, imageView2, imageView);
+        avatarListPane.getChildren().add(pane);
+
 
     }
 }
