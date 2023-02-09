@@ -1,9 +1,9 @@
 *{
     /*<variable>: <color>; <Main purpose> */
-    -fx-color1: #303841; /* Background */
+    -fx-color1: #1D0C0C; /* Background */
     -fx-color2: #EEEEEE; /* Text */
     -fx-color3: #FF0000; /* Buttons */
-    -fx-color4: #3A4750; /* Color Gradient effect */
+    -fx-color4: #1F1F1F; /* Color Gradient effect */
 }
 
 .root {
@@ -13,7 +13,7 @@
 }
 
 .scroll-pane, GridPane, HBox, FlowPane, VBox {
-    -fx-background-color: #3A4750;
+    -fx-background-color: -fx-color4;
 }
 
 
@@ -47,38 +47,6 @@
     -fx-background-color: #3A4750;
 }
 
-#mainViewTopbar, #mainViewTopButtons, #boxAdvancedSearch {
-    -fx-background-color: #303841;
-}
-
-#warningViewLabel26, #warningViewLabel2, #warningViewLabel6 {
-    -fx-background-color: #222222;
-}
-
-#homeView, #homeLabelAdded, #homeLabelAll, #homeLabelPopular{
-    -fx-background-color: #222222;
-
-}
-
-#movieCard, VBox {
-    -fx-background-color: transparent;
-}
-
-#categoryViewAnchor{
-    -fx-background-color: #3A4750;
-}
-
-#grid{
-    -fx-background-color: #3A4750;
-}
-
-#warningViewHBox{
-    -fx-background-color: #D72323;
-}
-
-#listCategories{
-    -fx-background-color: #3A4750;
-}
 
 .scroll-bar:horizontal, .scroll-bar:vertical, .scroll-bar:vertical .track, .scroll-bar:horizontal .track {
     -fx-background-color: #303841;
@@ -113,21 +81,15 @@
     -fx-font-weight: bold;
 }
 
-
 /* -------------------------------------------Login Specific styling---------------------------------------------------------------------*/
 #loginSlider, #loginInputGridPane, #loginInputGridPane1{
     -fx-background-color: #1F1F1F;
     -fx-opacity: 1;
     -fx-background-radius: 10;
-
-
 }
+
 #loginBackGround, #logInBorderPane{
     -fx-background-color: #1D0C0C;
-}
-
-#loginSlider{
-
 }
 
 #userId, #passwordField, #userId1, #passwordField1 {
