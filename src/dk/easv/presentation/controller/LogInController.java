@@ -39,6 +39,7 @@ public class LogInController implements Initializable {
     public Button btnSignUp;
     public ImageView profileImg;
     public Label profileLabel;
+    public Button btnEditProfileImg;
     private int sliderDistance = -390;
     public Label loginSlider;
     public AnchorPane loginBackGround;
