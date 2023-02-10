@@ -38,7 +38,7 @@ public class LogInController implements Initializable {
     public Label profileLabel;
     public Button btnEditProfileImg;
     public Pane avatarListPane;
-    private int sliderDistance = -390;
+    private int sliderDistance = -395;
     public Label loginSlider;
     public AnchorPane loginBackGround;
     public GridPane loginInputGridPane;
@@ -111,6 +111,7 @@ public class LogInController implements Initializable {
             isLoginSliderLeft = true;
         }
         sliderDistance = sliderDistance * -1;
+        System.out.println(sliderDistance);
         toogleSignInForm();
 
         TranslateTransition translate = new TranslateTransition();

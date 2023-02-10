@@ -48,12 +48,11 @@
                <font>
                   <Font size="20.0" />
                </font></Button>
-            <Label fx:id="loginSlider" alignment="CENTER" disable="true" layoutX="380.0" prefHeight="450.0" prefWidth="320.0">
+            <Label fx:id="loginSlider" alignment="CENTER" disable="true" layoutX="-11.0" prefHeight="450.0" prefWidth="320.0">
                <graphic>
                   <ImageView fx:id="loginLogo" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
             </Label>
-            <Pane fx:id="avatarListPane" layoutX="82.0" layoutY="220.0" maxHeight="200.0" maxWidth="220.0" prefHeight="200.0" prefWidth="220.0" scaleShape="false" />
             <Button fx:id="btnCloseApp" layoutX="660.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCloseApplication" prefHeight="22.0" prefWidth="25.0" text="X">
                <font>
                   <Font name="System Bold" size="10.0" />
