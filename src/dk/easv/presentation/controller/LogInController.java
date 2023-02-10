@@ -163,11 +163,14 @@ public class LogInController implements Initializable {
     public void handleOpenAvatarHBox(ActionEvent actionEvent) {
 
         ImageView imageView = new ImageView(new Image("UnknownUser.png"));
+        imageView.resize(10.2, 10.2);
         ImageView imageView1 = new ImageView(new Image("UnknownUser.png"));
         ImageView imageView2 = new ImageView(new Image("UnknownUser.png"));
 
-        FlowPane pane = new FlowPane(imageView1, imageView2, imageView);
-        avatarListPane.getChildren().add(pane);
+
+        HBox hBox = new HBox();
+        hBox.getChildren().add(imageView);
+        avatarListPane.getChildren().add(hBox);
 
 
     }
