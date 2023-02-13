@@ -47,7 +47,7 @@
     -fx-background-color: #3A4750;
 }
 
-#mainViewTopbar, #mainViewTopButtons, #boxAdvancedSearch, #mainViewSidebar, #bpCenter, #contentArea {
+#mainViewTopbar, #mainViewTopButtons, #boxAdvancedSearch, #mainViewSidebar {
     -fx-background-color: #303841;
 }
 

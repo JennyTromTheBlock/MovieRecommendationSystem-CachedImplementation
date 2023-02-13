@@ -73,24 +73,21 @@ public class MainController implements Initializable {
         if(!isMenuOpen) {
             isMenuOpen = true;
             transition.setToX(0);
-            if (bpCenter.getChildren().size()>1) {
-                bpCenter.getChildren().get(bpCenter.getChildren().indexOf(contentArea)).setOpacity(0.2);
-
-                EventHandler<MouseEvent> menuHandler = new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        handleMenu();
-                        contentArea.removeEventHandler(MouseEvent.MOUSE_CLICKED, this);
-                    }
-                };
-                contentArea.addEventHandler(MouseEvent.MOUSE_CLICKED, menuHandler);
-            }
+            contentArea.setOpacity(0.2);
+            EventHandler<MouseEvent> menuHandler = new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    handleMenu();
+                    contentArea.removeEventHandler(MouseEvent.MOUSE_CLICKED, this);
+                }
+            };
+            contentArea.addEventHandler(MouseEvent.MOUSE_CLICKED, menuHandler);
+            flowPane.setDisable(true);
         } else {
             isMenuOpen = false;
             transition.setToX(-100);
-            if (bpCenter.getChildren().size()>1) {
-                bpCenter.getChildren().get(bpCenter.getChildren().indexOf(contentArea)).setOpacity(1);
-            }
+            contentArea.setOpacity(1);
+            flowPane.setDisable(false);
         }
         transition.play();
     }
@@ -112,12 +109,12 @@ public class MainController implements Initializable {
             movieCard.getChildren().add(new Label(df.format(avgRating)));
 
             movieCard.setPadding(new Insets(5, 5, 5, 5));
-            movieCard.setOnMouseClicked(event -> openMovieInfo());
+            movieCard.setOnMouseClicked(event -> openMovieInfo(topMovie.getMovie()));
             flowPane.getChildren().add(movieCard);
         }
     }
 
-    private void openMovieInfo() {
+    private void openMovieInfo(Movie movie) {
         contentArea.setDisable(true);
         contentArea.setOpacity(0.2);
         Rectangle rect = new Rectangle(100, 100, 500, 300);
@@ -128,6 +125,7 @@ public class MainController implements Initializable {
             contentArea.setOpacity(1);
             bpCenter.getChildren().remove(rect);
         });
+        System.out.println(movie.getTitle());
     }
 
     public void handlePopular() {
