@@ -73,6 +73,7 @@ public class MainController implements Initializable {
             transition.setToX(0);
             if (bpCenter.getChildren().size()>1) {
                 bpCenter.getChildren().get(bpCenter.getChildren().indexOf(contentArea)).setOpacity(0.2);
+                contentArea.setOnMouseClicked(event -> handleMenu());
             }
         } else {
             isMenuOpen = false;
