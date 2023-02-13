@@ -7,6 +7,7 @@ import dk.easv.presentation.model.AppModel;
 import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -18,6 +19,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -73,7 +75,15 @@ public class MainController implements Initializable {
             transition.setToX(0);
             if (bpCenter.getChildren().size()>1) {
                 bpCenter.getChildren().get(bpCenter.getChildren().indexOf(contentArea)).setOpacity(0.2);
-                contentArea.setOnMouseClicked(event -> handleMenu());
+
+                EventHandler<MouseEvent> menuHandler = new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        handleMenu();
+                        contentArea.removeEventHandler(MouseEvent.MOUSE_CLICKED, this);
+                    }
+                };
+                contentArea.addEventHandler(MouseEvent.MOUSE_CLICKED, menuHandler);
             }
         } else {
             isMenuOpen = false;
@@ -102,8 +112,22 @@ public class MainController implements Initializable {
             movieCard.getChildren().add(new Label(df.format(avgRating)));
 
             movieCard.setPadding(new Insets(5, 5, 5, 5));
+            movieCard.setOnMouseClicked(event -> openMovieInfo());
             flowPane.getChildren().add(movieCard);
         }
+    }
+
+    private void openMovieInfo() {
+        contentArea.setDisable(true);
+        contentArea.setOpacity(0.2);
+        Rectangle rect = new Rectangle(100, 100, 500, 300);
+        bpCenter.getChildren().add(rect);
+
+        rect.setOnMouseClicked(event -> {
+            contentArea.setDisable(false);
+            contentArea.setOpacity(1);
+            bpCenter.getChildren().remove(rect);
+        });
     }
 
     public void handlePopular() {
