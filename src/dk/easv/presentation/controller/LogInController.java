@@ -32,20 +32,21 @@ public class LogInController implements Initializable {
         model.loginUserFromUsername(userId.getText());
         if(model.getObsLoggedInUser()!=null){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/App.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/MainWindowView.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.setTitle("Movie Recommendation System 0.01 Beta");
+            stage.getScene().getStylesheets().add(getClass().getResource("/dk/easv/presentation/CSS/Test.css").toExternalForm());
             stage.show();
-            AppController controller = loader.getController();
+            MainController controller = loader.getController();
 
             controller.setModel(model);
 
 
         } catch (IOException e) {
             e.printStackTrace();
-            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load App.fxml");
+            Alert alert = new Alert(Alert.AlertType.ERROR, "Could not load MainWindowView.fxml");
             alert.showAndWait();
         }
 
