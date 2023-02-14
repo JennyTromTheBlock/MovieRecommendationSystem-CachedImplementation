@@ -7,59 +7,20 @@
 <?import javafx.scene.text.*?>
 
 <BorderPane fx:id="borderPane" prefHeight="540.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainController">
-   <left>
-      <VBox fx:id="mainViewSidebar" minHeight="100.0" prefHeight="450.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAllMovies" prefHeight="30.0" prefWidth="80.0" text="All">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handlePopular" prefHeight="30.0" prefWidth="80.0" text="Popular">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleFavorites" prefHeight="30.0" prefWidth="80.0" text="Favorites">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <MenuButton fx:id="menuBtnCategory" minHeight="-Infinity" minWidth="60.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="80.0" text="Category" VBox.vgrow="ALWAYS">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-            </MenuButton>
-            <Separator maxHeight="1.7976931348623157E308" minHeight="0.0" prefHeight="180.0" prefWidth="100.0" visible="false" VBox.vgrow="ALWAYS" />
-            <Button fx:id="btnAddCategory" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddCategory" prefHeight="30.0" prefWidth="80.0" text="Edit Category">
-               <VBox.margin>
-                  <Insets left="10.0" top="10.0" />
-               </VBox.margin>
-               <padding>
-                  <Insets left="-5.0" right="-5.0" />
-               </padding>
-            </Button>
-            <Button fx:id="btnAddMovie" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddMovie" prefHeight="30.0" prefWidth="80.0" text="Add Movie" VBox.vgrow="NEVER">
-               <VBox.margin>
-                  <Insets bottom="10.0" left="10.0" top="10.0" />
-               </VBox.margin>
-            </Button>
-            <Button layoutX="20.0" layoutY="50.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleHome" prefHeight="30.0" prefWidth="80.0" text="Home" />
-         </children>
-      </VBox>
-   </left>
    <top>
-      <HBox fx:id="mainViewTopbar" minHeight="50.0" minWidth="200.0" prefHeight="50.0" prefWidth="960.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="mainViewTopbar" minHeight="50.0" minWidth="200.0" prefHeight="70.0" prefWidth="960.0" BorderPane.alignment="CENTER">
          <children>
-            <Button contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleHome" prefHeight="40.0" prefWidth="40.0" text=" ☰">
-               <font>
-                  <Font size="14.0" />
-               </font>
-               <HBox.margin>
-                  <Insets left="30.0" top="5.0" />
-               </HBox.margin>
-            </Button>
-            <Label fx:id="textSceneTitle" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="50.0" prefWidth="300.0" HBox.hgrow="ALWAYS">
+            <Label alignment="CENTER" prefHeight="70.0" prefWidth="179.0">
+               <graphic>
+                  <Button contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleHome" prefHeight="40.0" prefWidth="40.0" text=" ☰">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Button>
+               </graphic>
+            </Label>
+            <Separator maxHeight="-Infinity" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="70.0" prefWidth="171.0" visible="false" HBox.hgrow="ALWAYS" />
+            <Label fx:id="textSceneTitle" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="70.0" prefWidth="180.0" text="logo" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets left="10.0" />
                </HBox.margin>
@@ -67,130 +28,33 @@
                   <Font size="24.0" />
                </font>
             </Label>
-            <Separator maxHeight="-Infinity" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="50.0" prefWidth="50.0" visible="false" HBox.hgrow="ALWAYS" />
-            <HBox fx:id="boxAdvancedSearch" alignment="TOP_CENTER" opacity="0.0">
+            <HBox fx:id="mainViewTopButtons" prefHeight="187.0" prefWidth="394.0">
                <children>
-                  <MenuButton fx:id="menuButtonRating" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Rating" HBox.hgrow="ALWAYS">
+                  <HBox alignment="CENTER" prefHeight="173.0" prefWidth="232.0" HBox.hgrow="ALWAYS">
                      <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                     <items>
-                        <MenuItem fx:id="menuItemMinIMDB" mnemonicParsing="false" text="Min. IMDB">
-                           <graphic>
-                              <HBox fx:id="HBoxMinIMDB">
-                                 <children>
-                                    <Slider fx:id="sliderMinIMDBRating" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" showTickLabels="true" />
-                                    <Label fx:id="labelMinIMDBRating" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </MenuItem>
-                        <MenuItem fx:id="menuItemMaxIMDB" mnemonicParsing="false" text="Max. IMDB">
-                           <graphic>
-                              <HBox fx:id="HBoxMaxIMDB">
-                                 <children>
-                                    <Slider fx:id="sliderMaxIMDBRating" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" showTickLabels="true" value="10.0" />
-                                    <Label fx:id="labelMaxIMDBRating" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </MenuItem>
-                        <MenuItem fx:id="menuItemMinPR" mnemonicParsing="false" text="Min. Personal">
-                           <graphic>
-                              <HBox fx:id="HBoxMinPR">
-                                 <children>
-                                    <Slider fx:id="sliderMinPersonalRating" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" showTickLabels="true" />
-                                    <Label fx:id="labelMinPersonalRating" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </MenuItem>
-                        <MenuItem fx:id="menuItemMaxPR" mnemonicParsing="false" text="Max. Personal">
-                           <graphic>
-                              <HBox fx:id="HBoxMaxPR">
-                                 <children>
-                                    <Slider fx:id="sliderMaxPersonalRating" blockIncrement="1.0" majorTickUnit="1.0" max="10.0" minorTickCount="0" showTickLabels="true" value="10.0" />
-                                    <Label fx:id="labelMaxPersonalRating" HBox.hgrow="ALWAYS">
-                                       <font>
-                                          <Font size="14.0" />
-                                       </font>
-                                       <HBox.margin>
-                                          <Insets left="5.0" />
-                                       </HBox.margin>
-                                    </Label>
-                                 </children>
-                              </HBox>
-                           </graphic>
-                        </MenuItem>
-                     </items>
-                  </MenuButton>
-                  <MenuButton fx:id="searchMenuBtnCategory" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" text="Category" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets left="10.0" top="10.0" />
-                     </HBox.margin>
-                  </MenuButton>
-               </children>
-            </HBox>
-            <HBox fx:id="mainViewTopButtons">
-               <children>
-                  <TextField fx:id="textSearch" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="50.0" onKeyPressed="#handleEnter" prefHeight="30.0" prefWidth="205.0" promptText="Filter..." HBox.hgrow="ALWAYS">
-                     <opaqueInsets>
                         <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
                      </HBox.margin>
-                  </TextField>
-                  <Button fx:id="btnSearch" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSearch" prefHeight="30.0" prefWidth="30.0" text="🔍" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="5.0" top="10.0" />
-                     </HBox.margin>
-                  </Button>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSearchSettings" prefHeight="30.0" prefWidth="30.0" text="◀" HBox.hgrow="ALWAYS">
-                     <HBox.margin>
-                        <Insets right="10.0" top="10.0" />
-                     </HBox.margin>
-                     <font>
-                        <Font size="15.0" />
-                     </font>
-                  </Button>
-                  <MenuButton fx:id="menuBtnSortBy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" text="Sort">
-                    <items>
-                      <MenuItem fx:id="menuItmTitleAZ" mnemonicParsing="false" text="Title A-Z" />
-                      <MenuItem fx:id="menuItmTitleZA" mnemonicParsing="false" text="Title Z-A" />
-                        <MenuItem fx:id="menuItmIMDBMaxMin" mnemonicParsing="false" text="IMDB max-min" />
-                        <MenuItem fx:id="menuItmIMDBMinMax" mnemonicParsing="false" text="IMDB min-max" />
-                        <MenuItem fx:id="menuItmPRMinMax" mnemonicParsing="false" text="PR Rating min-max" />
-                        <MenuItem fx:id="menuItmPRMaxMin" mnemonicParsing="false" text="PR Rating max-min" />
-                    </items>
-                     <HBox.margin>
-                        <Insets right="10.0" top="10.0" />
-                     </HBox.margin>
-                  </MenuButton>
+                     <children>
+                        <TextField fx:id="textSearch" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="50.0" onKeyPressed="#handleEnter" prefHeight="30.0" prefWidth="194.0" promptText="Filter...">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </TextField>
+                        <Button fx:id="btnSearch" contentDisplay="CENTER" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleSearch" prefHeight="30.0" prefWidth="30.0" text="🔍" HBox.hgrow="ALWAYS">
+                           <font>
+                              <Font size="10.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="7.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="70.0" prefWidth="80.0" text="icon">
+                     <graphic>
+                        <ImageView fitHeight="55.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
+                  </Label>
                   <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleResize" prefHeight="30.0" prefWidth="30.0" text="🗖">
                      <HBox.margin>
                         <Insets right="5.0" top="6.0" />
@@ -205,11 +69,8 @@
             </HBox>
          </children>
          <BorderPane.margin>
-            <Insets bottom="5.0" />
+            <Insets />
          </BorderPane.margin>
       </HBox>
    </top>
-   <center>
-      <ImageView fx:id="imgViewLogo" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#handleHome" pickOnBounds="true" preserveRatio="true" BorderPane.alignment="CENTER" />
-   </center>
 </BorderPane>
