@@ -3,6 +3,7 @@ package dk.easv.presentation.controller;
 import dk.easv.entities.Movie;
 import dk.easv.entities.TopMovie;
 import dk.easv.entities.User;
+import dk.easv.entities.UserSimilarity;
 import dk.easv.presentation.model.AppModel;
 import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
@@ -43,11 +44,14 @@ public class MainController implements Initializable {
     private ScrollPane contentArea;
 
     private AppModel model;
+    private User loggedInUser;
     private FlowPane flowPane = new FlowPane();
     private ObservableList<TopMovie> recommended;
     private ObservableList<Movie> favorites;
     private ObservableList<Movie> popular;
+    private ObservableList<UserSimilarity> similarUsers;
     private boolean isMenuOpen;
+    private CardController cardController;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -56,11 +60,15 @@ public class MainController implements Initializable {
 
     public void setModel(AppModel model) {
         this.model = model;
-        model.loadData(new User(572962, "Mikhail Yeung"));
+        model.loginUserFromUsername("Mikhail Yeung");
+        loggedInUser = model.getObsLoggedInUser();// new User(572962, "Mikhail Yeung");
+        model.loadData(loggedInUser);
+        model.setObsLoggedInUser(loggedInUser);
 
         recommended = model.getObsTopMoviesSimilarUsers();
         popular = model.getObsTopMovieNotSeen();
         favorites = model.getObsTopMovieSeen();
+        similarUsers = model.getObsSimilarUsers();
     }
 
     public void handleMenu() {
@@ -100,17 +108,90 @@ public class MainController implements Initializable {
         handleMenu();
         clearContentArea();
 
+        int count = 0;
         for (TopMovie topMovie : recommended) {
-            VBox movieCard = new VBox();
-            movieCard.getChildren().add(new Label(topMovie.getTitle()));
-            movieCard.getChildren().add(new Label(String.valueOf(topMovie.getYear())));
-            double avgRating = topMovie.getAverageRating();
-            DecimalFormat df = new DecimalFormat("#.##");
-            movieCard.getChildren().add(new Label(df.format(avgRating)));
+            count++;
+            if (count>27) { break; }
+            VBox movieCard;
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
+                movieCard = loader.load();
+                cardController = loader.getController();
+                cardController.setMovieContent(topMovie.getMovie());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
 
-            movieCard.setPadding(new Insets(5, 5, 5, 5));
             movieCard.setOnMouseClicked(event -> openMovieInfo(topMovie.getMovie()));
             flowPane.getChildren().add(movieCard);
+        }
+    }
+
+    public void handlePopular() {
+        handleMenu();
+        clearContentArea();
+
+        int count = 0;
+        for (Movie movie : popular) {
+            count++;
+            if (count>27) { break; }
+            VBox movieCard;
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
+                movieCard = loader.load();
+                cardController = loader.getController();
+                cardController.setMovieContent(movie);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            movieCard.setOnMouseClicked(event -> openMovieInfo(movie));
+            flowPane.getChildren().add(movieCard);
+        }
+    }
+
+    public void handleFavorites() {
+        handleMenu();
+        clearContentArea();
+
+        int count = 0;
+        for (Movie movie : favorites) {
+            count++;
+            if (count>27) { break; }
+            VBox movieCard;
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
+                movieCard = loader.load();
+                cardController = loader.getController();
+                cardController.setMovieContent(movie);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            movieCard.setOnMouseClicked(event -> openMovieInfo(movie));
+            flowPane.getChildren().add(movieCard);
+        }
+    }
+
+    public void handleUsers() {
+        handleMenu();
+        clearContentArea();
+
+        int count = 0;
+        for(UserSimilarity user : similarUsers) {
+            count++;
+            if (count>27) { break; }
+            VBox userCard;
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
+                userCard = loader.load();
+                cardController = loader.getController();
+                cardController.setUserContent(user);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            flowPane.getChildren().add(userCard);
         }
     }
 
@@ -126,47 +207,6 @@ public class MainController implements Initializable {
             bpCenter.getChildren().remove(rect);
         });
         System.out.println(movie.getTitle());
-    }
-
-    public void handlePopular() {
-        handleMenu();
-        clearContentArea();
-
-        int count = 0;
-        for (Movie movie : popular) {
-            if (count > 200) { break; }
-            count++;
-            VBox movieCard = new VBox();
-            movieCard.getChildren().add(new Label(movie.getTitle()));
-            movieCard.getChildren().add(new Label(String.valueOf(movie.getYear())));
-            double avgRating = movie.getAverageRating();
-            DecimalFormat df = new DecimalFormat("#.##");
-            movieCard.getChildren().add(new Label(df.format(avgRating)));
-
-            movieCard.setPadding(new Insets(5, 5, 5, 5));
-            flowPane.getChildren().add(movieCard);
-        }
-    }
-
-    public void handleFavorites() {
-        handleMenu();
-        clearContentArea();
-
-        for (Movie movie : favorites) {
-            VBox movieCard = new VBox();
-            movieCard.getChildren().add(new Label(movie.getTitle()));
-            movieCard.getChildren().add(new Label(String.valueOf(movie.getYear())));
-            double avgRating = movie.getAverageRating();
-            DecimalFormat df = new DecimalFormat("#.##");
-            movieCard.getChildren().add(new Label(df.format(avgRating)));
-
-            movieCard.setPadding(new Insets(5, 5, 5, 5));
-            flowPane.getChildren().add(movieCard);
-        }
-    }
-
-    public void handleUsers() {
-        handleMenu();
     }
 
     private void clearContentArea() {
