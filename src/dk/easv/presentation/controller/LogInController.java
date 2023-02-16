@@ -25,6 +25,7 @@ public class LogInController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         model = new AppModel();
+        userId.setText("Bezalel Simmel");
     }
 
     public void logIn(ActionEvent actionEvent) {

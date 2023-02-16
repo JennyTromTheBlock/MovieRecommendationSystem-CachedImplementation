@@ -7,6 +7,7 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
@@ -14,11 +15,11 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainController">
+<BorderPane fx:id="borderPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainController">
    <top>
-      <HBox prefHeight="60.0" prefWidth="960.0" BorderPane.alignment="CENTER">
+      <HBox fx:id="hboxTopbar" prefHeight="60.0" prefWidth="960.0" BorderPane.alignment="CENTER">
          <children>
-            <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMenu" prefHeight="40.0" prefWidth="40.0">
+            <Button fx:id="btnBurgerMenu" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleMenu" prefHeight="40.0" prefWidth="40.0">
                <graphic>
                   <ImageView fx:id="ivMenu" fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true" />
                </graphic>
@@ -26,24 +27,17 @@
                   <Insets left="10.0" top="10.0" />
                </HBox.margin>
             </Button>
-            <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" visible="false" HBox.hgrow="ALWAYS" />
-            <HBox fx:id="mainViewTopButtons">
+            <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="60.0" prefWidth="412.0" visible="false" HBox.hgrow="ALWAYS" />
+            <HBox fx:id="hboxTopbarRight" prefHeight="60.0" prefWidth="718.0">
                <children>
-                  <TextField fx:id="textSearch" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="50.0" prefHeight="30.0" prefWidth="205.0" promptText="Filter..." HBox.hgrow="ALWAYS">
-                     <opaqueInsets>
-                        <Insets />
-                     </opaqueInsets>
-                     <HBox.margin>
-                        <Insets left="5.0" right="5.0" top="10.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <Button fx:id="btnSearch" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="🔍" HBox.hgrow="ALWAYS">
-                     <font>
-                        <Font size="10.0" />
-                     </font>
-                     <HBox.margin>
-                        <Insets right="5.0" top="10.0" />
-                     </HBox.margin>
+                  <Button fx:id="btnLogo" mnemonicParsing="false">
+                     <graphic>
+                        <ImageView fx:id="ivLogo">
+                           <image>
+                              <Image url="@../../../../../../../../../../Skrivebord/Billede1.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
                   </Button>
                   <MenuButton fx:id="menuBtnSortBy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" text="Sort">
                      <items>
@@ -55,20 +49,48 @@
                         <MenuItem fx:id="menuItmPRMaxMin" mnemonicParsing="false" text="PR Rating max-min" />
                      </items>
                      <HBox.margin>
-                        <Insets right="10.0" top="10.0" />
+                        <Insets left="80.0" top="15.0" />
                      </HBox.margin>
                   </MenuButton>
-                  <Button maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="🗖">
+                  <TextField fx:id="textSearch" maxHeight="-Infinity" minHeight="-Infinity" minWidth="50.0" prefHeight="30.0" prefWidth="130.0" promptText="Search" HBox.hgrow="ALWAYS">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
                      <HBox.margin>
-                        <Insets right="5.0" top="6.0" />
+                        <Insets left="20.0" top="15.0" />
                      </HBox.margin>
+                  </TextField>
+                  <Button fx:id="btnSearch" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" text="🔍" HBox.hgrow="ALWAYS">
+                     <font>
+                        <Font size="10.0" />
+                     </font>
+                     <HBox.margin>
+                        <Insets left="50.0" right="5.0" top="15.0" />
+                     </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="imgSearch" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
+                     </graphic>
                   </Button>
-                  <Button fx:id="btnClose" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" prefWidth="30.0" snapToPixel="false" text="✖" textAlignment="CENTER">
+                  <Button fx:id="btnAccount" mnemonicParsing="false">
                      <HBox.margin>
-                        <Insets right="6.0" top="6.0" />
+                        <Insets left="40.0" top="8.0" />
                      </HBox.margin>
+                     <graphic>
+                        <ImageView fx:id="ivAccount" fitHeight="39.0" fitWidth="39.0" preserveRatio="true" />
+                     </graphic>
+                  </Button>
+                  <Button fx:id="btnClose" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="43.0" snapToPixel="false" text="✖" textAlignment="CENTER">
+                     <HBox.margin>
+                        <Insets left="50.0" top="6.0" />
+                     </HBox.margin>
+                     <font>
+                        <Font size="18.0" />
+                     </font>
                   </Button>
                </children>
+               <HBox.margin>
+                  <Insets left="100.0" />
+               </HBox.margin>
             </HBox>
          </children>
       </HBox>

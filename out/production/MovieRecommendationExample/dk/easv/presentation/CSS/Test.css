@@ -13,18 +13,18 @@
 }
 
 .scroll-pane, GridPane, HBox, FlowPane, VBox {
-    -fx-background-color: #3A4750;
+    -fx-background-color: #232323;
 }
 
-
 .button {
-    -fx-background-color: #FF0000;
+    -fx-background-color: #232323;
     -fx-text-fill: -fx-color2;
     -fx-background-radius: 14;
 }
 
+
 .menu-button, .menu-item {
-    -fx-background-color: #FF0000;
+    -fx-background-color: #232323;
     -fx-text-fill: -fx-color2;
 }
 .menu-button{
@@ -84,7 +84,7 @@
 }
 
 .scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
-    -fx-background-color: #FF0000;
+    -fx-background-color: #3A4750;
 }
 
 .dialog-pane, .dialog-pane .header-panel {
@@ -108,4 +108,19 @@
 
 .list-cell:hover, .list-cell:selected {
     -fx-font-weight: bold;
+}
+
+#btnSearch, #btnAccount, #btnClose, #btnBurgerMenu, #btnLogo {
+    -fx-background-color: transparent;
+}
+
+#hboxTopbar, #hboxTopbarRight {
+    -fx-background-color: #373434;
+}
+
+#mainViewSidebar{
+    -fx-background-color: #373434;
+}
+#contentArea{
+    -fx-background-color: #101010;
 }

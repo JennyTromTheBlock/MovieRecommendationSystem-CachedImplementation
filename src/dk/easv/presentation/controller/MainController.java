@@ -15,6 +15,7 @@ import javafx.fxml.Initializable;
 import javafx.geometry.Insets;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
@@ -32,17 +33,21 @@ import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+
+    @FXML
+    private Button btnSearch;
+    @FXML
+    private Button btnAccount;
     @FXML
     private BorderPane borderPane;
     @FXML
-    private ImageView ivMenu;
+    private ImageView ivMenu, ivAccount;
     @FXML
     private VBox mainViewSidebar;
     @FXML
     private StackPane bpCenter;
     @FXML
     private ScrollPane contentArea;
-
     private AppModel model;
     private User loggedInUser;
     private FlowPane flowPane = new FlowPane();
@@ -52,10 +57,16 @@ public class MainController implements Initializable {
     private ObservableList<UserSimilarity> similarUsers;
     private boolean isMenuOpen;
     private CardController cardController;
+    @FXML
+    private ImageView imgSearch, ivLogo;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ivMenu.setImage(new Image("/hamburger-menu.png"));
+        imgSearch.setImage(new Image("/searchIcon.png"));
+        testSearch();
+        ivAccount.setImage(new Image("/9.png"));
+        ivLogo.setImage(new Image("/IconLogo.png"));
     }
 
     public void setModel(AppModel model) {
@@ -220,5 +231,11 @@ public class MainController implements Initializable {
         //Binds the width of the flow pane to the size of the BorderPane Center
         flowPane.prefHeightProperty().bind(contentArea.heightProperty());
         flowPane.prefWidthProperty().bind(contentArea.widthProperty());
+    }
+
+
+    private void testSearch(){
+        btnSearch.setOnMouseClicked(event -> System.out.println("clicked"));
+        btnAccount.setOnMouseClicked(event -> System.out.println("Account clicked"));
     }
 }
