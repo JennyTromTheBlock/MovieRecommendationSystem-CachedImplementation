@@ -40,10 +40,6 @@
     -fx-background-color: #303841;
 }
 
-.menu-item{
-    -fx-border-radius: 40;
-}
-
 .label {
     -fx-text-fill: -fx-color2;
 }
@@ -134,12 +130,11 @@
     -fx-background-color: transparent;
 }
 
-#menuItemMyAccount, #menuItemLogOut, #menuItemSettings, #menuItemTheme {
-
-    -fx-background-color: #303841;
-}
-
 #vBoxMovieCard{
     -fx-background-color: #101010;
+}
+
+.context-menu{
+    -fx-border-radius: 10;
 }
 
