@@ -12,7 +12,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -121,20 +123,10 @@ public class MainController implements Initializable {
 
         int count = 0;
         for (TopMovie topMovie : recommended) {
+            Movie movie = topMovie.getMovie();
             count++;
             if (count>27) { break; }
-            VBox movieCard;
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
-                movieCard = loader.load();
-                cardController = loader.getController();
-                cardController.setMovieContent(topMovie.getMovie());
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            movieCard.setOnMouseClicked(event -> openMovieInfo(topMovie.getMovie()));
-            flowPane.getChildren().add(movieCard);
+            loadMoiveCard(movie);
         }
     }
 
@@ -146,18 +138,7 @@ public class MainController implements Initializable {
         for (Movie movie : popular) {
             count++;
             if (count>27) { break; }
-            VBox movieCard;
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
-                movieCard = loader.load();
-                cardController = loader.getController();
-                cardController.setMovieContent(movie);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            movieCard.setOnMouseClicked(event -> openMovieInfo(movie));
-            flowPane.getChildren().add(movieCard);
+            loadMoiveCard(movie);
         }
     }
 
@@ -169,20 +150,25 @@ public class MainController implements Initializable {
         for (Movie movie : favorites) {
             count++;
             if (count>27) { break; }
-            VBox movieCard;
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
-                movieCard = loader.load();
-                cardController = loader.getController();
-                cardController.setMovieContent(movie);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            movieCard.setOnMouseClicked(event -> openMovieInfo(movie));
-            flowPane.getChildren().add(movieCard);
+            loadMoiveCard(movie);
         }
     }
+
+    private void loadMoiveCard(Movie movie) {
+        VBox movieCard;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
+            movieCard = loader.load();
+            cardController = loader.getController();
+            cardController.setMovieContent(movie);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        movieCard.setOnMouseClicked(event -> openMovieInfo(movie));
+        flowPane.getChildren().add(movieCard);
+    }
+
 
     public void handleUsers() {
         handleMenu();
@@ -190,20 +176,24 @@ public class MainController implements Initializable {
 
         int count = 0;
         for(UserSimilarity user : similarUsers) {
+            if (count>27) break;
             count++;
-            if (count>27) { break; }
-            VBox userCard;
-            try {
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
-                userCard = loader.load();
-                cardController = loader.getController();
-                cardController.setUserContent(user);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-
-            flowPane.getChildren().add(userCard);
+            loadUserCard(user);
         }
+    }
+
+    private void loadUserCard(UserSimilarity user) {
+        VBox userCard;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
+            userCard = loader.load();
+            cardController = loader.getController();
+            cardController.setUserContent(user);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        flowPane.getChildren().add(userCard);
     }
 
     private void openMovieInfo(Movie movie) {
@@ -223,7 +213,6 @@ public class MainController implements Initializable {
     private void clearContentArea() {
 
         flowPane.getChildren().clear();
-
         contentArea.setContent(flowPane);
 
         bpCenter.getChildren().get(bpCenter.getChildren().indexOf(contentArea)).setOpacity(1);
