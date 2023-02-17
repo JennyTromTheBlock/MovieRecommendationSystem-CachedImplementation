@@ -65,23 +65,29 @@
                         <Font size="10.0" />
                      </font>
                      <HBox.margin>
-                        <Insets left="50.0" right="5.0" top="15.0" />
+                        <Insets left="25.0" right="5.0" top="15.0" />
                      </HBox.margin>
                      <graphic>
                         <ImageView fx:id="imgSearch" fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true" />
                      </graphic>
                   </Button>
-                  <Button fx:id="btnAccount" mnemonicParsing="false">
-                     <HBox.margin>
-                        <Insets left="40.0" top="8.0" />
-                     </HBox.margin>
+                  <MenuButton fx:id="menuButtonAccount" mnemonicParsing="false" prefHeight="0.0" prefWidth="0.0">
+                    <items>
+                      <MenuItem fx:id="menuItemMyAccount" mnemonicParsing="false" text=" My account" />
+                      <MenuItem fx:id="menuItemSettings" mnemonicParsing="false" text=" Settings" />
+                        <MenuItem fx:id="menuItemTheme" mnemonicParsing="false" text=" Theme" />
+                        <MenuItem fx:id="menuItemLogOut" mnemonicParsing="false" text=" Log out" />
+                    </items>
                      <graphic>
                         <ImageView fx:id="ivAccount" fitHeight="39.0" fitWidth="39.0" preserveRatio="true" />
                      </graphic>
-                  </Button>
+                     <HBox.margin>
+                        <Insets left="30.0" top="8.0" />
+                     </HBox.margin>
+                  </MenuButton>
                   <Button fx:id="btnClose" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="39.0" prefWidth="43.0" snapToPixel="false" text="✖" textAlignment="CENTER">
                      <HBox.margin>
-                        <Insets left="50.0" top="6.0" />
+                        <Insets left="30.0" top="2.0" />
                      </HBox.margin>
                      <font>
                         <Font size="18.0" />

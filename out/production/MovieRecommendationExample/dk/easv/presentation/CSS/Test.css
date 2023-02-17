@@ -26,6 +26,7 @@
 .menu-button, .menu-item {
     -fx-background-color: #232323;
     -fx-text-fill: -fx-color2;
+    -fx-background-radius: 40;
 }
 .menu-button{
     -fx-background-radius: 14;
@@ -37,6 +38,10 @@
 
 .menu-item:hover {
     -fx-background-color: #303841;
+}
+
+.menu-item{
+    -fx-border-radius: 40;
 }
 
 .label {
@@ -124,3 +129,17 @@
 #contentArea{
     -fx-background-color: #101010;
 }
+
+#menuButtonAccount{
+    -fx-background-color: transparent;
+}
+
+#menuItemMyAccount, #menuItemLogOut, #menuItemSettings, #menuItemTheme {
+
+    -fx-background-color: #303841;
+}
+
+#vBoxMovieCard{
+    -fx-background-color: #101010;
+}
+

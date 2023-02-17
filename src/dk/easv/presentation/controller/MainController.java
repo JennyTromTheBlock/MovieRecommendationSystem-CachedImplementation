@@ -7,19 +7,13 @@ import dk.easv.entities.UserSimilarity;
 import dk.easv.presentation.model.AppModel;
 import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.control.Alert;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,18 +22,18 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
     @FXML
-    private Button btnSearch;
+    private MenuItem menuItemMyAccount, menuItemSettings, menuItemTheme, menuItemLogOut;
     @FXML
-    private Button btnAccount;
+    private MenuButton menuButtonAccount;
+    @FXML
+    private Button btnSearch;
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -69,6 +63,14 @@ public class MainController implements Initializable {
         testSearch();
         ivAccount.setImage(new Image("/9.png"));
         ivLogo.setImage(new Image("/IconLogo.png"));
+
+        //Setting MenuItem icons
+        menuItemMyAccount.setGraphic(new ImageView(new Image("IconMyAccount.png")));
+        menuItemSettings.setGraphic(new ImageView(new Image("IconSettings.png")));
+        menuItemTheme.setGraphic(new ImageView(new Image("IconTheme.png")));
+        menuItemLogOut.setGraphic(new ImageView(new Image("IconLogOut.png")));
+
+
     }
 
     public void setModel(AppModel model) {
@@ -225,6 +227,6 @@ public class MainController implements Initializable {
 
     private void testSearch(){
         btnSearch.setOnMouseClicked(event -> System.out.println("clicked"));
-        btnAccount.setOnMouseClicked(event -> System.out.println("Account clicked"));
+        menuButtonAccount.setOnMouseClicked(event -> System.out.println("Account clicked"));
     }
 }
