@@ -79,7 +79,7 @@ public class LogInController implements Initializable {
             stage.getScene().getStylesheets().add(getClass().getResource("/dk/easv/presentation/CSS/Test.css").toExternalForm());
             stage.initStyle(StageStyle.UNDECORATED);
             stage.show();
-            MainController controller = loader.getController();
+            //MainController controller = loader.getController();
 
             //controller.setModel(model);
 
