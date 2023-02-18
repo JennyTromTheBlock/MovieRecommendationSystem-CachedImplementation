@@ -1,9 +1,9 @@
 *{
     /*<variable>: <color>; <Main purpose> */
-    -fx-color1: #1D0C0C; /* Background */
+    -fx-color1: #303841; /* Background */
     -fx-color2: #EEEEEE; /* Text */
     -fx-color3: #FF0000; /* Buttons */
-    -fx-color4: #1F1F1F; /* Color Gradient effect */
+    -fx-color4: #3A4750; /* Color Gradient effect */
 }
 
 .root {
@@ -13,18 +13,18 @@
 }
 
 .scroll-pane, GridPane, HBox, FlowPane, VBox {
-    -fx-background-color: -fx-color4;
+    -fx-background-color: #232323;
 }
 
-
 .button {
-    -fx-background-color: #FF0000;
+    -fx-background-color: #232323;
     -fx-text-fill: -fx-color2;
     -fx-background-radius: 14;
 }
 
+
 .menu-button, .menu-item {
-    -fx-background-color: #FF0000;
+    -fx-background-color: #232323;
     -fx-text-fill: -fx-color2;
 }
 .menu-button{
@@ -47,21 +47,50 @@
     -fx-background-color: #3A4750;
 }
 
+#mainViewTopbar, #mainViewTopButtons, #boxAdvancedSearch, #mainViewSidebar {
+    -fx-background-color: #303841;
+}
+
+#warningViewLabel26, #warningViewLabel2, #warningViewLabel6 {
+    -fx-background-color: #222222;
+}
+
+#homeView, #homeLabelAdded, #homeLabelAll, #homeLabelPopular{
+    -fx-background-color: #222222;
+}
+
+#movieCard, VBox {
+    -fx-background-color: transparent;
+}
+
+#categoryViewAnchor{
+    -fx-background-color: #3A4750;
+}
+
+#grid{
+    -fx-background-color: #3A4750;
+}
+
+#warningViewHBox{
+    -fx-background-color: #D72323;
+}
+
+#listCategories{
+    -fx-background-color: #3A4750;
+}
 
 .scroll-bar:horizontal, .scroll-bar:vertical, .scroll-bar:vertical .track, .scroll-bar:horizontal .track {
     -fx-background-color: #303841;
 }
 
 .scroll-bar:vertical .thumb, .scroll-bar:horizontal .thumb {
-    -fx-background-color: #FF0000;
+    -fx-background-color: #3A4750;
 }
 
 .dialog-pane, .dialog-pane .header-panel {
     -fx-background-color: #303841;
     -fx-border-color: #3A4750;
 }
-
-
 
 .list-view {
     -fx-background-color: transparent;
@@ -79,6 +108,21 @@
 
 .list-cell:hover, .list-cell:selected {
     -fx-font-weight: bold;
+}
+
+#btnSearch, #btnAccount, #btnClose, #btnBurgerMenu, #btnLogo {
+    -fx-background-color: transparent;
+}
+
+#hboxTopbar, #hboxTopbarRight {
+    -fx-background-color: #373434;
+}
+
+#mainViewSidebar{
+    -fx-background-color: #373434;
+}
+#contentArea{
+    -fx-background-color: #101010;
 }
 
 /* -------------------------------------------Login Specific styling---------------------------------------------------------------------*/
