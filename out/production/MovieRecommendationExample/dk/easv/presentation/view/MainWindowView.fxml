@@ -41,12 +41,10 @@
                   </Button>
                   <MenuButton fx:id="menuBtnSortBy" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="30.0" text="Sort">
                      <items>
-                        <MenuItem fx:id="menuItmTitleAZ" mnemonicParsing="false" text="Title A-Z" />
-                        <MenuItem fx:id="menuItmTitleZA" mnemonicParsing="false" text="Title Z-A" />
-                        <MenuItem fx:id="menuItmIMDBMaxMin" mnemonicParsing="false" text="IMDB max-min" />
-                        <MenuItem fx:id="menuItmIMDBMinMax" mnemonicParsing="false" text="IMDB min-max" />
-                        <MenuItem fx:id="menuItmPRMinMax" mnemonicParsing="false" text="PR Rating min-max" />
-                        <MenuItem fx:id="menuItmPRMaxMin" mnemonicParsing="false" text="PR Rating max-min" />
+                        <MenuItem fx:id="menuItmTitleAZ" mnemonicParsing="false" text="Title" />
+                        <MenuItem fx:id="menuItmIMDBMaxMin" mnemonicParsing="false" text="IMDB rating" />
+                        <MenuItem fx:id="menuItmPRMinMax" mnemonicParsing="false" text="PR rating" />
+                        <MenuItem mnemonicParsing="false" text="Category" />
                      </items>
                      <HBox.margin>
                         <Insets left="80.0" top="15.0" />

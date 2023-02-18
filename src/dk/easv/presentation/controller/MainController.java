@@ -28,6 +28,7 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    public MenuItem menuItmTitleAZ;
     @FXML
     private MenuItem menuItemMyAccount, menuItemSettings, menuItemTheme, menuItemLogOut;
     @FXML
@@ -61,15 +62,17 @@ public class MainController implements Initializable {
         ivMenu.setImage(new Image("/hamburger-menu.png"));
         imgSearch.setImage(new Image("/searchIcon.png"));
         testSearch();
-        ivAccount.setImage(new Image("/9.png"));
         ivLogo.setImage(new Image("/IconLogo.png"));
 
-        //Setting MenuItem icons
+        //Setting Account button icon and Account MenuItem icons
+        ivAccount.setImage(new Image("/9.png"));
         menuItemMyAccount.setGraphic(new ImageView(new Image("IconMyAccount.png")));
         menuItemSettings.setGraphic(new ImageView(new Image("IconSettings.png")));
         menuItemTheme.setGraphic(new ImageView(new Image("IconTheme.png")));
         menuItemLogOut.setGraphic(new ImageView(new Image("IconLogOut.png")));
 
+        //Sort menu
+        menuItmTitleAZ.setGraphic(new ImageView(new Image("IconTitleRising.png")));
 
     }
 
