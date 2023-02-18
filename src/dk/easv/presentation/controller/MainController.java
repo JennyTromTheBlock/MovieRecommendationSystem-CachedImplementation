@@ -61,10 +61,9 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ivMenu.setImage(new Image("/hamburger-menu.png"));
-        imgSearch.setImage(new Image("/searchIcon.png"));
+        imgSearch.setImage(new Image("/IconSearch.png"));
         testSearch();
         ivLogo.setImage(new Image("/IconLogo.png"));
-        ivFilter.setImage(new Image("IconFilter.png"));
 
         //Setting Account button icon and Account MenuItem icons
         ivAccount.setImage(new Image("/9.png"));
@@ -73,9 +72,9 @@ public class MainController implements Initializable {
         menuItemTheme.setGraphic(new ImageView(new Image("IconTheme.png")));
         menuItemLogOut.setGraphic(new ImageView(new Image("IconLogOut.png")));
 
-        //Sort menu
+        //Filter menu
+        ivFilter.setImage(new Image("IconFilter.png"));
         menuItmTitleAZ.setGraphic(new ImageView(new Image("IconTitleRising.png")));
-
     }
 
     public void setModel(AppModel model) {
