@@ -110,3 +110,9 @@
     -fx-background-color: transparent;
     -fx-text-fill: -fx-color2;
 }
+
+#btnLogIn, #btnSignUp {
+    -fx-background-color: #FF0000;
+    -fx-text-fill: -fx-color2;
+    -fx-background-radius: 14;
+}
