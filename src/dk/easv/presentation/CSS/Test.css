@@ -36,6 +36,10 @@
     -fx-background-color: #3A4750;
 }
 
+.menu-button > .arrow-button > .arrow {
+    -fx-padding: 0;
+}
+
 .menu-item:hover {
     -fx-background-color: #303841;
 }
@@ -122,16 +126,9 @@
 #mainViewSidebar{
     -fx-background-color: #373434;
 }
-#contentArea{
-    -fx-background-color: #101010;
-}
 
-#menuButtonAccount{
+#menuButtonAccount, #menuBtnSortBy{
     -fx-background-color: transparent;
-}
-
-#vBoxMovieCard{
-    -fx-background-color: #101010;
 }
 
 .context-menu{

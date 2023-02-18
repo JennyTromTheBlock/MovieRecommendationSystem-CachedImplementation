@@ -29,6 +29,7 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     public MenuItem menuItmTitleAZ;
+    public ImageView ivFilter;
     @FXML
     private MenuItem menuItemMyAccount, menuItemSettings, menuItemTheme, menuItemLogOut;
     @FXML
@@ -63,6 +64,7 @@ public class MainController implements Initializable {
         imgSearch.setImage(new Image("/searchIcon.png"));
         testSearch();
         ivLogo.setImage(new Image("/IconLogo.png"));
+        ivFilter.setImage(new Image("IconFilter.png"));
 
         //Setting Account button icon and Account MenuItem icons
         ivAccount.setImage(new Image("/9.png"));
