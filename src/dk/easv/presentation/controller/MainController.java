@@ -62,6 +62,8 @@ public class MainController implements Initializable {
     @FXML
     private ImageView imgSearch, ivLogo;
 
+    private MainContentController content;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ivMenu.setImage(new Image("/hamburger-menu.png"));
@@ -69,6 +71,19 @@ public class MainController implements Initializable {
         testSearch();
         ivAccount.setImage(new Image("/9.png"));
         ivLogo.setImage(new Image("/IconLogo.png"));
+
+        VBox contentView;
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/MainContentView.fxml"));
+            contentView = loader.load();
+            content = loader.getController();
+            System.out.println(content);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        contentArea.setContent(contentView);
+
     }
 
     public void setModel(AppModel model) {
@@ -82,6 +97,8 @@ public class MainController implements Initializable {
         popular = model.getObsTopMovieNotSeen();
         favorites = model.getObsTopMovieSeen();
         similarUsers = model.getObsSimilarUsers();
+
+        content.loadContent(recommended, popular, favorites, similarUsers);
     }
 
     public void handleMenu() {
