@@ -67,22 +67,13 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ivMenu.setImage(new Image("/hamburger-menu.png"));
-        imgSearch.setImage(new Image("/searchIcon.png"));
-        testSearch();
-        ivAccount.setImage(new Image("/9.png"));
-        ivLogo.setImage(new Image("/IconLogo.png"));
 
-        VBox contentView;
-        try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/MainContentView.fxml"));
-            contentView = loader.load();
-            content = loader.getController();
-            System.out.println(content);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        //imgSearch.setImage(new Image("/searchIcon.png"));
+        //testSearch();
+        //ivAccount.setImage(new Image("/9.png"));
+        //ivLogo.setImage(new Image("/IconLogo.png"));
 
-        contentArea.setContent(contentView);
+
 
     }
 
