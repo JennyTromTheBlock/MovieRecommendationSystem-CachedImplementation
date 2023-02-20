@@ -25,12 +25,5 @@ public class InfoController implements Initializable {
         imageViewPicture.setImage(new Image("IconMovieCover.png"));
 
     }
-
-    public void setMovieTitle(Movie movie){
-        movie.setTitle("Onkel Anders");
-        labelName.setText(movie.getTitle());
-
-
-    }
 }
 

@@ -34,6 +34,7 @@ public class MainController implements Initializable {
 
     public MenuItem menuItmTitleAZ;
     public ImageView ivFilter;
+    public MenuButton menuBtnSortBy;
     @FXML
     private MenuItem menuItemMyAccount, menuItemSettings, menuItemTheme, menuItemLogOut;
     @FXML
@@ -240,25 +241,11 @@ public class MainController implements Initializable {
         menuButtonAccount.setOnMouseClicked(event -> System.out.println("Account clicked"));
     }
 
-    public void loadInfoContent(Movie movie) throws Exception{
+    public void handleLogo(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/InfoView.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
-        infoController = loader.getController();
-        infoController.setMovieTitle(movie);
-        stage.setTitle("Movie Recommendation System 0.01 Beta");
         stage.show();
-    }
-
-
-    public void handleLogo() throws Exception {
-
-        int count = 0;
-        for(Movie movie : popular) {
-            if (count>0) break;
-            count++;
-            loadInfoContent(movie);
-        }
     }
 }
