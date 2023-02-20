@@ -68,7 +68,6 @@ public class MainController implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         ivMenu.setImage(new Image("/hamburger-menu.png"));
         imgSearch.setImage(new Image("/IconSearch.png"));
-        testSearch();
         ivLogo.setImage(new Image("/IconLogo.png"));
 
         //Setting Account button icon and Account MenuItem icons
@@ -235,17 +234,12 @@ public class MainController implements Initializable {
         flowPane.prefWidthProperty().bind(contentArea.widthProperty());
     }
 
-
-    private void testSearch(){
-        btnSearch.setOnMouseClicked(event -> System.out.println("clicked"));
-        menuButtonAccount.setOnMouseClicked(event -> System.out.println("Account clicked"));
-    }
-
     public void handleLogo(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/InfoView.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
         stage.setScene(new Scene(root));
+        infoController = loader.getController();
         stage.show();
     }
 }
