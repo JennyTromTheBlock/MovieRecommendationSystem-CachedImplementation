@@ -36,6 +36,8 @@ import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    public VBox burgerSlider;
+    public HBox recommendedField;
     @FXML
     private Button btnSearch;
     @FXML
@@ -64,20 +66,23 @@ public class MainController implements Initializable {
 
     private MainContentController content;
 
+    private ObservableList<VBox> recommendedList;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ivMenu.setImage(new Image("/hamburger-menu.png"));
 
-        //imgSearch.setImage(new Image("/searchIcon.png"));
-        //testSearch();
-        //ivAccount.setImage(new Image("/9.png"));
-        //ivLogo.setImage(new Image("/IconLogo.png"));
+        imgSearch.setImage(new Image("/searchIcon.png"));
+        testSearch();
+        ivAccount.setImage(new Image("/9.png"));
+        ivLogo.setImage(new Image("/IconLogo.png"));
 
 
 
     }
 
     public void setModel(AppModel model) {
+
         this.model = model;
         model.loginUserFromUsername("Mikhail Yeung");
         loggedInUser = model.getObsLoggedInUser();// new User(572962, "Mikhail Yeung");
@@ -89,7 +94,25 @@ public class MainController implements Initializable {
         favorites = model.getObsTopMovieSeen();
         similarUsers = model.getObsSimilarUsers();
 
-        content.loadContent(recommended, popular, favorites, similarUsers);
+        //content.loadContent(recommended, popular, favorites, similarUsers);
+
+        for(int i = 0; i< 25; i++){
+            Movie m = recommended.get(i).getMovie();
+
+            VBox movieCard;
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
+                movieCard = loader.load();
+                cardController = loader.getController();
+                cardController.setMovieContent(m);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+
+            movieCard.setOnMouseClicked(event -> openMovieInfo(m));
+            recommendedField.getChildren().add(movieCard);
+
+        }
     }
 
     public void handleMenu() {
