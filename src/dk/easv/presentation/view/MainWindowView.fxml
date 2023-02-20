@@ -30,7 +30,7 @@
             <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" orientation="VERTICAL" prefHeight="60.0" prefWidth="412.0" visible="false" HBox.hgrow="ALWAYS" />
             <HBox fx:id="hboxTopbarRight" prefHeight="60.0" prefWidth="718.0">
                <children>
-                  <Button fx:id="btnLogo" mnemonicParsing="false">
+                  <Button fx:id="btnLogo" mnemonicParsing="false" onAction="#handleLogo">
                      <graphic>
                         <ImageView fx:id="ivLogo">
                            <image>

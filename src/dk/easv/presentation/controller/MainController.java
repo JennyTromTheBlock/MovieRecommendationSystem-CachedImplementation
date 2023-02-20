@@ -7,10 +7,13 @@ import dk.easv.entities.UserSimilarity;
 import dk.easv.presentation.model.AppModel;
 import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
@@ -20,6 +23,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -55,6 +59,7 @@ public class MainController implements Initializable {
     private ObservableList<UserSimilarity> similarUsers;
     private boolean isMenuOpen;
     private CardController cardController;
+    private InfoController infoController;
     @FXML
     private ImageView imgSearch, ivLogo;
 
@@ -180,6 +185,7 @@ public class MainController implements Initializable {
         handleMenu();
         clearContentArea();
 
+
         int count = 0;
         for(UserSimilarity user : similarUsers) {
             if (count>27) break;
@@ -232,5 +238,27 @@ public class MainController implements Initializable {
     private void testSearch(){
         btnSearch.setOnMouseClicked(event -> System.out.println("clicked"));
         menuButtonAccount.setOnMouseClicked(event -> System.out.println("Account clicked"));
+    }
+
+    public void loadInfoContent(Movie movie) throws Exception{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/InfoView.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        infoController = loader.getController();
+        infoController.setMovieTitle(movie);
+        stage.setTitle("Movie Recommendation System 0.01 Beta");
+        stage.show();
+    }
+
+
+    public void handleLogo() throws Exception {
+
+        int count = 0;
+        for(Movie movie : popular) {
+            if (count>0) break;
+            count++;
+            loadInfoContent(movie);
+        }
     }
 }
