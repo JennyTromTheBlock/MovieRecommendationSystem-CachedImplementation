@@ -2,6 +2,7 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollPane?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainController">
+<BorderPane fx:id="borderPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainController">
    <top>
       <HBox fx:id="hboxTopbar" prefHeight="60.0" prefWidth="960.0" BorderPane.alignment="CENTER">
          <children>
@@ -130,7 +131,82 @@
                   </Button>
                </children>
             </VBox>
-            <ScrollPane fx:id="contentArea" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" />
+            <ScrollPane fx:id="contentArea" hbarPolicy="NEVER" prefHeight="200.0" prefWidth="200.0" vbarPolicy="ALWAYS">
+               <content>
+                  <VBox fx:id="homeView" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefWidth="1366.0">
+                     <children>
+                        <HBox VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="homeLabelAdded" prefHeight="25.0" prefWidth="200.0" text="Recommended" HBox.hgrow="NEVER">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="440.0" visible="false" HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" onAction="#handleRecommended" text="View all" HBox.hgrow="NEVER">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <ScrollPane fx:id="listLastAdded" hbarPolicy="ALWAYS" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" minWidth="60.0" prefHeight="300.0" prefWidth="850.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                           <content>
+                              <HBox fx:id="hBoxRecommended" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="60.0" prefHeight="290.0" prefWidth="2500.0" />
+                           </content>
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin>
+                        </ScrollPane>
+                        <HBox VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="homeLabelPopular" prefHeight="0.0" prefWidth="200.0" text="Popular">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="440.0" visible="false" HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" onAction="#handlePopular" text="View all" HBox.hgrow="NEVER">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <ScrollPane fx:id="listPopular" hbarPolicy="ALWAYS" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" prefHeight="300.0" prefWidth="490.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                           <content>
+                              <HBox fx:id="hBoxPopular" prefHeight="290.0" prefWidth="2500.0" />
+                           </content>
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin>
+                        </ScrollPane>
+                        <HBox VBox.vgrow="ALWAYS">
+                           <children>
+                              <Label fx:id="homeLabelAll" prefHeight="25.0" prefWidth="200.0" text="Favorites">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="440.0" visible="false" HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" onAction="#handleFavorites" text="View all" HBox.hgrow="NEVER">
+                                 <HBox.margin>
+                                    <Insets left="5.0" right="20.0" />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                        </HBox>
+                        <ScrollPane fx:id="listAllMovies" hbarPolicy="ALWAYS" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" prefHeight="300.0" prefWidth="490.0" vbarPolicy="NEVER" VBox.vgrow="ALWAYS">
+                           <content>
+                              <HBox fx:id="hBoxFavorites" prefHeight="290.0" prefWidth="2500.0" />
+                           </content>
+                           <VBox.margin>
+                              <Insets right="10.0" />
+                           </VBox.margin>
+                        </ScrollPane>
+                     </children>
+                  </VBox>
+               </content></ScrollPane>
          </children>
       </StackPane>
    </center>

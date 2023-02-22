@@ -7,19 +7,12 @@ import dk.easv.entities.UserSimilarity;
 import dk.easv.presentation.model.AppModel;
 import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.HPos;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,14 +21,14 @@ import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
-import java.awt.*;
 import java.io.IOException;
 import java.net.URL;
-import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
 
+    @FXML
+    private HBox hBoxFavorites, hBoxPopular, hBoxRecommended;
     @FXML
     private Button btnSearch;
     @FXML
@@ -45,7 +38,7 @@ public class MainController implements Initializable {
     @FXML
     private ImageView ivMenu, ivAccount;
     @FXML
-    private VBox mainViewSidebar;
+    private VBox mainViewSidebar, homeView;
     @FXML
     private StackPane bpCenter;
     @FXML
@@ -69,6 +62,13 @@ public class MainController implements Initializable {
         testSearch();
         ivAccount.setImage(new Image("/9.png"));
         ivLogo.setImage(new Image("/IconLogo.png"));
+
+        //Binds the width of the homeView to the size of the BorderPane Center
+        homeView.prefWidthProperty().bind(contentArea.widthProperty());
+
+        //Binds the width of the flow pane to the size of the BorderPane Center
+        flowPane.prefHeightProperty().bind(contentArea.heightProperty());
+        flowPane.prefWidthProperty().bind(contentArea.widthProperty());
     }
 
     public void setModel(AppModel model) {
@@ -81,6 +81,8 @@ public class MainController implements Initializable {
         popular = model.getObsTopMovieNotSeen();
         favorites = model.getObsTopMovieSeen();
         similarUsers = model.getObsSimilarUsers();
+
+        loadHome();
     }
 
     public void handleMenu() {
@@ -114,46 +116,85 @@ public class MainController implements Initializable {
 
     public void handleHome() {
         handleMenu();
+        clearContentArea();
+
+        contentArea.setContent(homeView); //VBox HomeView?
+    }
+
+    private void loadHome() {
+        //Load all recommended movies
+        int count = 0;
+        for (TopMovie topMovie : recommended) {
+            Movie movie = topMovie.getMovie();
+            count++;
+            if (count>27) { break; }
+            VBox movieCard = loadMovieCard(movie);
+            hBoxRecommended.getChildren().add(movieCard);
+        }
+
+        //Load all popular movies
+        count = 0;
+        for (Movie movie : popular) {
+            count++;
+            if (count>27) { break; }
+            VBox movieCard = loadMovieCard(movie);
+            hBoxPopular.getChildren().add(movieCard);
+        }
+
+        //Load all favorite movies
+        count = 0;
+        for (Movie movie : favorites) {
+            count++;
+            if (count>27) { break; }
+            VBox movieCard = loadMovieCard(movie);
+            hBoxFavorites.getChildren().add(movieCard);
+        }
     }
 
     public void handleRecommended() {
         handleMenu();
         clearContentArea();
+        contentArea.setContent(flowPane);
 
         int count = 0;
         for (TopMovie topMovie : recommended) {
             Movie movie = topMovie.getMovie();
             count++;
             if (count>27) { break; }
-            loadMoiveCard(movie);
+            VBox movieCard = loadMovieCard(movie);
+            flowPane.getChildren().add(movieCard);
         }
     }
 
     public void handlePopular() {
         handleMenu();
         clearContentArea();
+        contentArea.setContent(flowPane);
 
         int count = 0;
         for (Movie movie : popular) {
             count++;
             if (count>27) { break; }
-            loadMoiveCard(movie);
+            VBox movieCard = loadMovieCard(movie);
+            flowPane.getChildren().add(movieCard);
         }
     }
 
     public void handleFavorites() {
         handleMenu();
         clearContentArea();
+        contentArea.setContent(flowPane);
 
         int count = 0;
         for (Movie movie : favorites) {
             count++;
             if (count>27) { break; }
-            loadMoiveCard(movie);
+            VBox movieCard = loadMovieCard(movie);
+            flowPane.getChildren().add(movieCard);
         }
     }
 
-    private void loadMoiveCard(Movie movie) {
+    private VBox loadMovieCard(Movie movie) {
         VBox movieCard;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
@@ -165,13 +206,14 @@ public class MainController implements Initializable {
         }
 
         movieCard.setOnMouseClicked(event -> openMovieInfo(movie));
-        flowPane.getChildren().add(movieCard);
+        return movieCard;
     }
 
 
     public void handleUsers() {
         handleMenu();
         clearContentArea();
+        contentArea.setContent(flowPane);
 
         int count = 0;
         for(UserSimilarity user : similarUsers) {
@@ -212,13 +254,7 @@ public class MainController implements Initializable {
     private void clearContentArea() {
 
         flowPane.getChildren().clear();
-        contentArea.setContent(flowPane);
-
         bpCenter.getChildren().get(bpCenter.getChildren().indexOf(contentArea)).setOpacity(1);
-
-        //Binds the width of the flow pane to the size of the BorderPane Center
-        flowPane.prefHeightProperty().bind(contentArea.heightProperty());
-        flowPane.prefWidthProperty().bind(contentArea.widthProperty());
     }
 
 
