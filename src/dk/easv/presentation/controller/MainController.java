@@ -73,8 +73,7 @@ public class MainController implements Initializable {
 
     public void setModel(AppModel model) {
         this.model = model;
-        model.loginUserFromUsername("Mikhail Yeung");
-        loggedInUser = model.getObsLoggedInUser();// new User(572962, "Mikhail Yeung");
+        loggedInUser = model.getObsLoggedInUser();//
         model.loadData(loggedInUser);
         model.setObsLoggedInUser(loggedInUser);
 
