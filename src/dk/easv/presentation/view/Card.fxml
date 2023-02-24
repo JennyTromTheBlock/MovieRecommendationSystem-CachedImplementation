@@ -23,9 +23,6 @@
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
             </Label>
             <Label fx:id="labelRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="62.0">
                <graphic>
@@ -34,9 +31,6 @@
                <HBox.margin>
                   <Insets left="5.0" />
                </HBox.margin>
-               <font>
-                  <Font size="14.0" />
-               </font>
             </Label>
          </children>
          <VBox.margin>
@@ -48,7 +42,7 @@
             <Insets left="5.0" />
          </VBox.margin>
          <font>
-            <Font size="18.0" />
+            <Font size="14.0" />
          </font>
       </Label>
    </children>

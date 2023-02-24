@@ -7,12 +7,14 @@ import dk.easv.entities.UserSimilarity;
 import dk.easv.presentation.model.AppModel;
 import javafx.animation.TranslateTransition;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -23,10 +25,19 @@ import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.DecimalFormat;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
-
+    @FXML
+    private HBox hBoxBottom;
+    @FXML
+    private TilePane tilePaneRight;
+    @FXML
+    private Label labelLeft, labelRight, labelMovieTitle;
+    @FXML
+    private ImageView image, iconLeft, iconRight;
     @FXML
     private HBox hBoxFavorites, hBoxPopular, hBoxRecommended;
     @FXML
@@ -38,7 +49,7 @@ public class MainController implements Initializable {
     @FXML
     private ImageView ivMenu, ivAccount;
     @FXML
-    private VBox mainViewSidebar, homeView;
+    private VBox mainViewSidebar, homeView, infoView;
     @FXML
     private StackPane bpCenter;
     @FXML
@@ -54,6 +65,11 @@ public class MainController implements Initializable {
     private CardController cardController;
     @FXML
     private ImageView imgSearch, ivLogo;
+
+    private Random random = new Random();
+    private DecimalFormat df = new DecimalFormat("#.##");
+    private Image iconHeart = new Image("/iconHeart.png");
+    private Image iconStar = new Image("/iconStar.png");
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -209,6 +225,60 @@ public class MainController implements Initializable {
         return movieCard;
     }
 
+    private void openMovieInfo(Movie movie) {
+        //Setopacity 1 og ryk til front fra mainview
+
+        contentArea.setDisable(true);
+        contentArea.setOpacity(0.2);
+
+        infoView.setDisable(false);
+        infoView.setOpacity(1);
+
+        //TODO Load in correct info from selected movie
+        loadMovieInfo(movie);
+        System.out.println(movie.getTitle());
+    }
+
+    private void loadMovieInfo(Movie movie) {
+        Image imagePoster = new Image("/poster" + (1 + random.nextInt(9)) + ".jpg");
+        image.setImage(imagePoster); //Movie Poster image
+
+        iconLeft.setImage(iconHeart); //Icon for personal rating
+        labelLeft.setText(""); //Label for personal rating
+
+        iconRight.setImage(iconStar); //Icon for average rating
+        labelRight.setText(df.format(movie.getAverageRating())); //Label for average rating
+
+        labelMovieTitle.setText(movie.getTitle()); //Label for movie title
+
+        int count = 0;
+        for(TopMovie topMovie : recommended) {
+            count++;
+            if(count>10) { break; }
+            Movie simMovie = topMovie.getMovie();
+            VBox movieCard = loadMovieCard(simMovie);
+            hBoxBottom.getChildren().add(movieCard);
+        }
+
+        count = 0;
+        for(UserSimilarity user : similarUsers) {
+            if (count>10) break;
+            count++;
+            VBox userCard = loadUserCard(user);
+            tilePaneRight.getChildren().add(userCard);
+        }
+    }
+
+    public void handleCloseInfo(ActionEvent actionEvent) {
+        infoView.setDisable(true);
+        infoView.setOpacity(0);
+
+        contentArea.setDisable(false);
+        contentArea.setOpacity(1);
+
+        hBoxBottom.getChildren().clear();
+        tilePaneRight.getChildren().clear();
+    }
 
     public void handleUsers() {
         handleMenu();
@@ -219,11 +289,12 @@ public class MainController implements Initializable {
         for(UserSimilarity user : similarUsers) {
             if (count>27) break;
             count++;
-            loadUserCard(user);
+            VBox userCard = loadUserCard(user);
+            flowPane.getChildren().add(userCard);
         }
     }
 
-    private void loadUserCard(UserSimilarity user) {
+    private VBox loadUserCard(UserSimilarity user) {
         VBox userCard;
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/Card.fxml"));
@@ -234,22 +305,54 @@ public class MainController implements Initializable {
             throw new RuntimeException(e);
         }
 
-        flowPane.getChildren().add(userCard);
+        userCard.setOnMouseClicked(event -> openUserInfo(user));
+        return userCard;
     }
 
-    private void openMovieInfo(Movie movie) {
+    private void openUserInfo(UserSimilarity simUser) {
+        //Setopacity 1 og ryk til front fra mainview
+
         contentArea.setDisable(true);
         contentArea.setOpacity(0.2);
-        Rectangle rect = new Rectangle(100, 100, 500, 300);
-        bpCenter.getChildren().add(rect);
 
-        rect.setOnMouseClicked(event -> {
-            contentArea.setDisable(false);
-            contentArea.setOpacity(1);
-            bpCenter.getChildren().remove(rect);
-        });
-        System.out.println(movie.getTitle());
+        infoView.setDisable(false);
+        infoView.setOpacity(1);
+
+        //TODO Load in correct info from selected movie
+        loadUserInfo(simUser);
+        System.out.println(simUser.getName());
     }
+
+    private void loadUserInfo(UserSimilarity user) {
+        Image avatar = new Image("/" + random.nextInt(50) + ".png");
+        image.setImage(avatar); //User image
+
+        iconLeft.setImage(iconStar); //Icon for total no. of ratings
+        labelLeft.setText(String.valueOf(user.getUser().getRatingsSize())); //Label for total no. of ratings
+
+        //iconRight.setImage(); //Icon for similarity
+        labelRight.setText(user.getSimilarityPercent()); //Label for similarity
+
+        labelMovieTitle.setText(user.getName()); //Label for user name
+
+        int count = 0;
+        for(TopMovie topMovie : recommended) {
+            count++;
+            if(count>10) { break; }
+            Movie simMovie = topMovie.getMovie();
+            VBox movieCard = loadMovieCard(simMovie);
+            hBoxBottom.getChildren().add(movieCard);
+        }
+
+        count = 0;
+        for(UserSimilarity simUser : similarUsers) {
+            if (count>10) break;
+            count++;
+            VBox userCard = loadUserCard(simUser);
+            tilePaneRight.getChildren().add(userCard);
+        }
+    }
+
 
     private void clearContentArea() {
 
@@ -262,4 +365,6 @@ public class MainController implements Initializable {
         btnSearch.setOnMouseClicked(event -> System.out.println("clicked"));
         btnAccount.setOnMouseClicked(event -> System.out.println("Account clicked"));
     }
+
+
 }

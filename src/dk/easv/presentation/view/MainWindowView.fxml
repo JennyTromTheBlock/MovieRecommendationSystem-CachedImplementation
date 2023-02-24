@@ -10,9 +10,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.StackPane?>
+<?import javafx.scene.layout.TilePane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
@@ -139,7 +141,7 @@
                            <children>
                               <Label fx:id="homeLabelAdded" prefHeight="25.0" prefWidth="200.0" text="Recommended" HBox.hgrow="NEVER">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="20.0" />
                                  </font>
                               </Label>
                               <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="440.0" visible="false" HBox.hgrow="ALWAYS" />
@@ -147,6 +149,9 @@
                                  <HBox.margin>
                                     <Insets left="5.0" right="20.0" />
                                  </HBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
                               </Button>
                            </children>
                         </HBox>
@@ -162,7 +167,7 @@
                            <children>
                               <Label fx:id="homeLabelPopular" prefHeight="0.0" prefWidth="200.0" text="Popular">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="20.0" />
                                  </font>
                               </Label>
                               <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="440.0" visible="false" HBox.hgrow="ALWAYS" />
@@ -170,6 +175,9 @@
                                  <HBox.margin>
                                     <Insets left="5.0" right="20.0" />
                                  </HBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
                               </Button>
                            </children>
                         </HBox>
@@ -185,7 +193,7 @@
                            <children>
                               <Label fx:id="homeLabelAll" prefHeight="25.0" prefWidth="200.0" text="Favorites">
                                  <font>
-                                    <Font size="16.0" />
+                                    <Font size="20.0" />
                                  </font>
                               </Label>
                               <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" prefWidth="440.0" visible="false" HBox.hgrow="ALWAYS" />
@@ -193,6 +201,9 @@
                                  <HBox.margin>
                                     <Insets left="5.0" right="20.0" />
                                  </HBox.margin>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
                               </Button>
                            </children>
                         </HBox>
@@ -207,6 +218,68 @@
                      </children>
                   </VBox>
                </content></ScrollPane>
+            <VBox fx:id="infoView" disable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.0" prefHeight="558.0" prefWidth="1216.0">
+               <children>
+                  <HBox>
+                     <children>
+                        <Label fx:id="labelMovieTitle" prefHeight="50.0" text="Recommended" HBox.hgrow="NEVER">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <HBox.margin>
+                              <Insets left="10.0" />
+                           </HBox.margin>
+                        </Label>
+                        <Separator maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minWidth="0.0" prefHeight="50.0" prefWidth="440.0" visible="false" HBox.hgrow="ALWAYS" />
+                        <Button mnemonicParsing="false" onAction="#handleCloseInfo" prefHeight="40.0" prefWidth="40.0" text="X" HBox.hgrow="NEVER">
+                           <HBox.margin>
+                              <Insets left="5.0" right="10.0" top="10.0" />
+                           </HBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <AnchorPane>
+                     <children>
+                        <VBox maxWidth="-Infinity" prefWidth="800.0">
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <ImageView fx:id="image" fitHeight="195.0" fitWidth="130.0" pickOnBounds="true" preserveRatio="true" />
+                                    <VBox>
+                                       <children>
+                                          <Label fx:id="labelLeft" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="62.0">
+                                             <graphic>
+                                                <ImageView fx:id="iconLeft" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                             </graphic>
+                                          </Label>
+                                          <Label fx:id="labelRight" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="25.0" prefWidth="62.0">
+                                             <graphic>
+                                                <ImageView fx:id="iconRight" fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true" />
+                                             </graphic>
+                                          </Label>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                        <ScrollPane fx:id="listLastAdded2" hbarPolicy="ALWAYS" layoutY="195.0" maxWidth="-Infinity" minHeight="300.0" minWidth="60.0" prefHeight="300.0" prefWidth="800.0" vbarPolicy="NEVER">
+                           <content>
+                              <HBox fx:id="hBoxBottom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="60.0" prefHeight="290.0" prefWidth="800.0" />
+                           </content>
+                        </ScrollPane>
+                        <ScrollPane fx:id="listLastAdded1" hbarPolicy="NEVER" layoutX="833.0" maxWidth="-Infinity" minHeight="300.0" minWidth="60.0" prefHeight="500.0" prefWidth="315.0" vbarPolicy="ALWAYS">
+                           <content>
+                              <TilePane fx:id="tilePaneRight" prefHeight="500.0" prefWidth="300.0" />
+                           </content>
+                        </ScrollPane>
+                     </children>
+                  </AnchorPane>
+               </children>
+            </VBox>
          </children>
       </StackPane>
    </center>
