@@ -26,6 +26,7 @@
 .menu-button, .menu-item {
     -fx-background-color: #232323;
     -fx-text-fill: -fx-color2;
+    -fx-background-radius: 40;
 }
 .menu-button{
     -fx-background-radius: 14;
@@ -33,6 +34,10 @@
 
 .menu-item{
     -fx-background-color: #3A4750;
+}
+
+.menu-button > .arrow-button > .arrow {
+    -fx-padding: 0;
 }
 
 .menu-item:hover {
@@ -96,8 +101,6 @@
     -fx-border-color: #3A4750;
 }
 
-
-
 .list-view {
     -fx-background-color: transparent;
     -fx-control-inner-background: transparent;
@@ -127,8 +130,9 @@
 #mainViewSidebar{
     -fx-background-color: #373434;
 }
-#contentArea{
-    -fx-background-color: #101010;
+
+#menuButtonAccount, #menuBtnSortBy{
+    -fx-background-color: transparent;
 }
 
 /* -------------------------------------------Login Specific styling---------------------------------------------------------------------*/
@@ -166,3 +170,9 @@
     -fx-text-fill: -fx-color2;
     -fx-background-radius: 14;
 }
+
+
+.context-menu{
+    -fx-border-radius: 10;
+}
+

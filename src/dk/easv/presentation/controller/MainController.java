@@ -13,14 +13,18 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
+import javafx.stage.Stage;
 import javafx.util.Duration;
 
 import java.io.IOException;
@@ -30,6 +34,14 @@ import java.util.Random;
 import java.util.ResourceBundle;
 
 public class MainController implements Initializable {
+
+    public MenuItem menuItmTitleAZ;
+    public ImageView ivFilter;
+    public MenuButton menuBtnSortBy;
+    @FXML
+    private MenuItem menuItemMyAccount, menuItemSettings, menuItemTheme, menuItemLogOut;
+    @FXML
+    private MenuButton menuButtonAccount;
     @FXML
     private HBox hBoxBottom;
     @FXML
@@ -42,8 +54,6 @@ public class MainController implements Initializable {
     private HBox hBoxFavorites, hBoxPopular, hBoxRecommended;
     @FXML
     private Button btnSearch;
-    @FXML
-    private Button btnAccount;
     @FXML
     private BorderPane borderPane;
     @FXML
@@ -63,6 +73,7 @@ public class MainController implements Initializable {
     private ObservableList<UserSimilarity> similarUsers;
     private boolean isMenuOpen;
     private CardController cardController;
+    private InfoController infoController;
     @FXML
     private ImageView imgSearch, ivLogo;
 
@@ -74,10 +85,19 @@ public class MainController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         ivMenu.setImage(new Image("/hamburger-menu.png"));
-        imgSearch.setImage(new Image("/searchIcon.png"));
-        testSearch();
-        ivAccount.setImage(new Image("/9.png"));
+        imgSearch.setImage(new Image("/IconSearch.png"));
         ivLogo.setImage(new Image("/IconLogo.png"));
+
+        //Setting Account button icon and Account MenuItem icons
+        ivAccount.setImage(new Image("/9.png"));
+        menuItemMyAccount.setGraphic(new ImageView(new Image("IconMyAccount.png")));
+        menuItemSettings.setGraphic(new ImageView(new Image("IconSettings.png")));
+        menuItemTheme.setGraphic(new ImageView(new Image("IconTheme.png")));
+        menuItemLogOut.setGraphic(new ImageView(new Image("IconLogOut.png")));
+
+        //Filter menu
+        ivFilter.setImage(new Image("IconFilter.png"));
+        menuItmTitleAZ.setGraphic(new ImageView(new Image("IconTitleRising.png")));
 
         //Binds the width of the homeView to the size of the BorderPane Center
         homeView.prefWidthProperty().bind(contentArea.widthProperty());
@@ -360,11 +380,12 @@ public class MainController implements Initializable {
         bpCenter.getChildren().get(bpCenter.getChildren().indexOf(contentArea)).setOpacity(1);
     }
 
-
-    private void testSearch(){
-        btnSearch.setOnMouseClicked(event -> System.out.println("clicked"));
-        btnAccount.setOnMouseClicked(event -> System.out.println("Account clicked"));
+    public void handleLogo(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/dk/easv/presentation/view/InfoView.fxml"));
+        Parent root = loader.load();
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        infoController = loader.getController();
+        stage.show();
     }
-
-
 }
