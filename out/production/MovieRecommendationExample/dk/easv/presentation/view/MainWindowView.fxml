@@ -23,7 +23,6 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane fx:id="borderPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainController">
 <BorderPane fx:id="borderPane" prefHeight="768.0" prefWidth="1366.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="dk.easv.presentation.controller.MainController">
    <top>
       <HBox fx:id="hboxTopbar" prefHeight="60.0" prefWidth="960.0" BorderPane.alignment="CENTER">
@@ -42,9 +41,7 @@
                   <Button fx:id="btnLogo" mnemonicParsing="false" onAction="#handleLogo">
                      <graphic>
                         <ImageView fx:id="ivLogo">
-                           <image>
-                              <Image url="@../../../../../../../../../../Skrivebord/Billede1.png" />
-                           </image>
+
                         </ImageView>
                      </graphic>
                   </Button>
