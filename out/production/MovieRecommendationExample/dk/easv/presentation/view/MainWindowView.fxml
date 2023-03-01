@@ -222,7 +222,7 @@
                <children>
                   <HBox>
                      <children>
-                        <Label fx:id="labelMovieTitle" prefHeight="50.0" text="Recommended" HBox.hgrow="NEVER">
+                        <Label fx:id="labelMovieTitle" prefHeight="50.0" HBox.hgrow="NEVER">
                            <font>
                               <Font size="20.0" />
                            </font>
@@ -266,16 +266,34 @@
                               </HBox>
                            </children>
                         </VBox>
-                        <ScrollPane fx:id="listLastAdded2" hbarPolicy="ALWAYS" layoutY="195.0" maxWidth="-Infinity" minHeight="300.0" minWidth="60.0" prefHeight="300.0" prefWidth="800.0" vbarPolicy="NEVER">
-                           <content>
-                              <HBox fx:id="hBoxBottom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="60.0" prefHeight="290.0" prefWidth="800.0" />
-                           </content>
-                        </ScrollPane>
-                        <ScrollPane fx:id="listLastAdded1" hbarPolicy="NEVER" layoutX="833.0" maxWidth="-Infinity" minHeight="300.0" minWidth="60.0" prefHeight="500.0" prefWidth="315.0" vbarPolicy="ALWAYS">
-                           <content>
-                              <TilePane fx:id="tilePaneRight" prefHeight="500.0" prefWidth="300.0" />
-                           </content>
-                        </ScrollPane>
+                        <VBox layoutY="195.0">
+                           <children>
+                              <Label text="You might also like ...">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <ScrollPane fx:id="listLastAdded2" hbarPolicy="ALWAYS" maxWidth="-Infinity" minHeight="300.0" minWidth="60.0" prefHeight="300.0" prefWidth="915.0" vbarPolicy="NEVER">
+                                 <content>
+                                    <HBox fx:id="hBoxBottom" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="60.0" prefHeight="290.0" prefWidth="800.0" />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
+                        <VBox layoutX="1029.0" layoutY="-2.0">
+                           <children>
+                              <Label text="Similar users">
+                                 <font>
+                                    <Font size="20.0" />
+                                 </font>
+                              </Label>
+                              <ScrollPane fx:id="listLastAdded1" hbarPolicy="NEVER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="300.0" minWidth="60.0" prefHeight="450.0" prefWidth="150.0" vbarPolicy="ALWAYS">
+                                 <content>
+                                    <TilePane fx:id="tilePaneRight" prefHeight="500.0" prefWidth="300.0" />
+                                 </content>
+                              </ScrollPane>
+                           </children>
+                        </VBox>
                      </children>
                   </AnchorPane>
                </children>
